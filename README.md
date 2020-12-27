@@ -16,7 +16,8 @@ before.
 authors, publishers, stocks, loan records.
 5. A book cannot be lent if it is out of stock.
 6. When a book is lent, tenancy will be calculated as page number divided by 5.
-#Database
+
+# Database
 We will create a database for the program which includes following tables.
 1. Book table: ID, title, publicationYear, pageNumber, publisherID, authorID
 2. Author table: ID, name, surname
