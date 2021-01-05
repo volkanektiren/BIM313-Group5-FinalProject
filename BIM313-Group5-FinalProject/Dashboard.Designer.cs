@@ -39,14 +39,15 @@ namespace BIM313_Group5_FinalProject
             this.viewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.visitorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.lendsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.minimizeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.minimizeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
             // 
+            this.menuStrip1.BackColor = System.Drawing.Color.White;
             this.menuStrip1.GripMargin = new System.Windows.Forms.Padding(2, 2, 0, 2);
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -79,7 +80,7 @@ namespace BIM313_Group5_FinalProject
             this.viewBooksToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("viewBooksToolStripMenuItem.Image")));
             this.viewBooksToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.viewBooksToolStripMenuItem.Name = "viewBooksToolStripMenuItem";
-            this.viewBooksToolStripMenuItem.Size = new System.Drawing.Size(319, 64);
+            this.viewBooksToolStripMenuItem.Size = new System.Drawing.Size(285, 64);
             this.viewBooksToolStripMenuItem.Text = "View Books";
             // 
             // viewAuthorsToolStripMenuItem
@@ -87,7 +88,7 @@ namespace BIM313_Group5_FinalProject
             this.viewAuthorsToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("viewAuthorsToolStripMenuItem.Image")));
             this.viewAuthorsToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.viewAuthorsToolStripMenuItem.Name = "viewAuthorsToolStripMenuItem";
-            this.viewAuthorsToolStripMenuItem.Size = new System.Drawing.Size(319, 64);
+            this.viewAuthorsToolStripMenuItem.Size = new System.Drawing.Size(285, 64);
             this.viewAuthorsToolStripMenuItem.Text = "View Authors";
             // 
             // viewPublishersToolStripMenuItem
@@ -95,7 +96,7 @@ namespace BIM313_Group5_FinalProject
             this.viewPublishersToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("viewPublishersToolStripMenuItem.Image")));
             this.viewPublishersToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.viewPublishersToolStripMenuItem.Name = "viewPublishersToolStripMenuItem";
-            this.viewPublishersToolStripMenuItem.Size = new System.Drawing.Size(319, 64);
+            this.viewPublishersToolStripMenuItem.Size = new System.Drawing.Size(285, 64);
             this.viewPublishersToolStripMenuItem.Text = "View Publishers";
             // 
             // viewToolStripMenuItem
@@ -103,11 +104,12 @@ namespace BIM313_Group5_FinalProject
             this.viewToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("viewToolStripMenuItem.Image")));
             this.viewToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.viewToolStripMenuItem.Name = "viewToolStripMenuItem";
-            this.viewToolStripMenuItem.Size = new System.Drawing.Size(319, 64);
+            this.viewToolStripMenuItem.Size = new System.Drawing.Size(285, 64);
             this.viewToolStripMenuItem.Text = "View Genres";
             // 
             // visitorToolStripMenuItem
             // 
+            this.visitorToolStripMenuItem.BackColor = System.Drawing.Color.White;
             this.visitorToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("visitorToolStripMenuItem.Image")));
             this.visitorToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.visitorToolStripMenuItem.Name = "visitorToolStripMenuItem";
@@ -123,6 +125,15 @@ namespace BIM313_Group5_FinalProject
             this.lendsToolStripMenuItem.Text = "Lends";
             this.lendsToolStripMenuItem.Click += new System.EventHandler(this.lendsToolStripMenuItem_Click);
             // 
+            // minimizeToolStripMenuItem
+            // 
+            this.minimizeToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("minimizeToolStripMenuItem.Image")));
+            this.minimizeToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.minimizeToolStripMenuItem.Name = "minimizeToolStripMenuItem";
+            this.minimizeToolStripMenuItem.Size = new System.Drawing.Size(149, 47);
+            this.minimizeToolStripMenuItem.Text = "Minimize";
+            this.minimizeToolStripMenuItem.Click += new System.EventHandler(this.minimizeToolStripMenuItem_Click);
+            // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("exitToolStripMenuItem.Image")));
@@ -137,15 +148,6 @@ namespace BIM313_Group5_FinalProject
             this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
-            // 
-            // minimizeToolStripMenuItem
-            // 
-            this.minimizeToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("minimizeToolStripMenuItem.Image")));
-            this.minimizeToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.minimizeToolStripMenuItem.Name = "minimizeToolStripMenuItem";
-            this.minimizeToolStripMenuItem.Size = new System.Drawing.Size(149, 47);
-            this.minimizeToolStripMenuItem.Text = "Minimize";
-            this.minimizeToolStripMenuItem.Click += new System.EventHandler(this.minimizeToolStripMenuItem_Click);
             // 
             // Dashboard
             // 
