@@ -32,7 +32,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="System" />
+    <Reference Include="System">
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.dll</HintPath>
+    </Reference>
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -45,6 +47,48 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ChildComponents\Lends.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ChildComponents\Lends.Designer.cs">
+      <DependentUpon>Lends.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ChildComponents\ViewAuthors.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ChildComponents\ViewAuthors.Designer.cs">
+      <DependentUpon>ViewAuthors.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ChildComponents\ViewBooks.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ChildComponents\ViewBooks.Designer.cs">
+      <DependentUpon>ViewBooks.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ChildComponents\ViewGenres.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ChildComponents\ViewGenres.Designer.cs">
+      <DependentUpon>ViewGenres.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ChildComponents\ViewPublishers.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ChildComponents\ViewPublishers.Designer.cs">
+      <DependentUpon>ViewPublishers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ChildComponents\ViewStocks.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ChildComponents\ViewStocks.Designer.cs">
+      <DependentUpon>ViewStocks.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ChildComponents\Visitors.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ChildComponents\Visitors.Designer.cs">
+      <DependentUpon>Visitors.cs</DependentUpon>
+    </Compile>
     <Compile Include="Dashboard.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -58,6 +102,27 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="ChildComponents\Lends.resx">
+      <DependentUpon>Lends.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ChildComponents\ViewAuthors.resx">
+      <DependentUpon>ViewAuthors.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ChildComponents\ViewBooks.resx">
+      <DependentUpon>ViewBooks.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ChildComponents\ViewGenres.resx">
+      <DependentUpon>ViewGenres.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ChildComponents\ViewPublishers.resx">
+      <DependentUpon>ViewPublishers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ChildComponents\ViewStocks.resx">
+      <DependentUpon>ViewStocks.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ChildComponents\Visitors.resx">
+      <DependentUpon>Visitors.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Dashboard.en.resx">
       <DependentUpon>Dashboard.cs</DependentUpon>
     </EmbeddedResource>
