@@ -37,7 +37,7 @@ namespace BIM313_Group5_FinalProject
         }
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if(MessageBox.Show("Are you sure?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Stop) == DialogResult.Yes)
+            if(MessageBox.Show("Are you sure?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
                 Application.Exit();
         }
 

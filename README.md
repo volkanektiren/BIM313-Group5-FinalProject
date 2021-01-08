@@ -24,3 +24,12 @@ We will create a database for the program which includes following tables.
 3. Publisher table: ID, name
 4. Stock table: ID, number, bookID
 5. Loan table: ID, visitorFullname, lendDate, tenancy, bookID
+
+# New Features
+1. Visitor table: ID, TCKN, FirstName, LastName, Gender, EMail, Age
+2. Genre table: ID, genreName
+3. genreID column is added to Books table.
+4. Loan(Lend) table keeps visitorID instead of visitorFullName
+5. A visitor is currently able to lend at most 3 books.
+6. Visitor will get an e-mail when there is 1 day left to give back date of lending from program.
+7. The program shows a small information form after every event.

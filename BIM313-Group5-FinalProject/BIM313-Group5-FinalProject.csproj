@@ -47,6 +47,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddAuthor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddAuthor.Designer.cs">
+      <DependentUpon>AddAuthor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AddBook.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddBook.Designer.cs">
+      <DependentUpon>AddBook.cs</DependentUpon>
+    </Compile>
     <Compile Include="ChildComponents\Lends.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -95,13 +107,50 @@
     <Compile Include="Dashboard.Designer.cs">
       <DependentUpon>Dashboard.cs</DependentUpon>
     </Compile>
+    <Compile Include="EditAuthor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditAuthor.Designer.cs">
+      <DependentUpon>EditAuthor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EditBook.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditBook.Designer.cs">
+      <DependentUpon>EditBook.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EditStock.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditStock.Designer.cs">
+      <DependentUpon>EditStock.cs</DependentUpon>
+    </Compile>
     <Compile Include="LMSDBDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>LMSDBDataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Models\Author.cs" />
+    <Compile Include="Models\Book.cs" />
+    <Compile Include="Models\Genre.cs" />
+    <Compile Include="Models\Lend.cs" />
+    <Compile Include="Models\Publisher.cs" />
+    <Compile Include="Models\Stock.cs" />
+    <Compile Include="Models\Visitor.cs" />
+    <Compile Include="NewRecord.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NewRecord.Designer.cs">
+      <DependentUpon>NewRecord.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="AddAuthor.resx">
+      <DependentUpon>AddAuthor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AddBook.resx">
+      <DependentUpon>AddBook.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ChildComponents\Lends.resx">
       <DependentUpon>Lends.cs</DependentUpon>
     </EmbeddedResource>
@@ -128,6 +177,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Dashboard.resx">
       <DependentUpon>Dashboard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditAuthor.resx">
+      <DependentUpon>EditAuthor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditBook.resx">
+      <DependentUpon>EditBook.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditStock.resx">
+      <DependentUpon>EditStock.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NewRecord.resx">
+      <DependentUpon>NewRecord.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -163,8 +224,8 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="LMSDB.mdb">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    <Content Include="LMSDb.mdb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

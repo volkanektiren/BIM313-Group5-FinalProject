@@ -16,5 +16,68 @@ namespace BIM313_Group5_FinalProject.ChildComponents
         {
             InitializeComponent();
         }
+
+        private void ViewStocks_Load(object sender, EventArgs e)
+        {
+            // TODO: This line of code loads data into the 'lMSDBDataSet.Stocks' table. You can move, or remove it, as needed.
+            this.stocksTableAdapter.Fill(this.lMSDBDataSet.Stocks);
+
+        }
+
+        private void addStockRecordbtn_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                NewRecord newRecord = new NewRecord();
+                newRecord.ShowDialog();
+            }
+            catch(Exception)
+            {
+                MessageBox.Show("Something wrong!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                this.ViewStocks_Load(sender, e);
+            }
+        }
+
+        private void editRecordbtn_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                EditStock editStock = new EditStock();
+                editStock.bookID = Int32.Parse(stocksDataGridView.Rows[stocksDataGridView.SelectedRows[0].Index].Cells[0].Value.ToString());
+                editStock.ShowDialog();
+            }
+            catch (ArgumentOutOfRangeException)
+            {
+                MessageBox.Show("Please select a row first!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                this.ViewStocks_Load(sender, e);
+            }
+        }
+
+        private void deleteRecordbtn_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                this.stocksTableAdapter.DeleteStock(Int32.Parse(stocksDataGridView.Rows[stocksDataGridView.SelectedRows[0].Index].Cells[0].Value.ToString()));
+            }
+            catch (ArgumentOutOfRangeException)
+            {
+                MessageBox.Show("Please select a row first!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                this.ViewStocks_Load(sender, e);
+            }
+        }
+
+        private void refreshbtn_Click(object sender, EventArgs e)
+        {
+            this.ViewStocks_Load(sender, e);
+        }
     }
 }
