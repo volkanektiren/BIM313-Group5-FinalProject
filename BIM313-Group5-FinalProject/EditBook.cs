@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using BIM313_Group5_FinalProject.Models;
+using BIM313_Group5_FinalProject.ChildComponents;
 
 namespace BIM313_Group5_FinalProject
 {
@@ -45,10 +46,12 @@ namespace BIM313_Group5_FinalProject
                 book.publisherID = (int)comboBox3.SelectedValue;
 
                 booksTableAdapter.UpdateBook(book.title, book.publicationYear, book.pageNumber, book.authorID, book.genreID, book.publisherID, this.bookID);
+                ViewBooks.isChanged = true;
             }
             catch (DBConcurrencyException)
             {
                 MessageBox.Show("An errer occured while crud operation on database!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ViewBooks.isChanged = false;
             }
             finally
             {

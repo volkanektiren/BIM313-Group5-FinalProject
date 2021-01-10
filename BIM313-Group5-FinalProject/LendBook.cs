@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using BIM313_Group5_FinalProject.Models;
+using BIM313_Group5_FinalProject.ChildComponents;
 
 namespace BIM313_Group5_FinalProject
 {
@@ -32,24 +33,36 @@ namespace BIM313_Group5_FinalProject
 
                 if (lendsTableAdapter.IsExist(lend.bookID, lend.visitorID) == 0)
                 {
-                    if((int)lendsTableAdapter.CountNotReturnedLendsByVisitorID(lend.visitorID) < 3)
+                    if ((int)lendsTableAdapter.CountNotReturnedLendsByVisitorID(lend.visitorID) < 3)
                     {
                         if (stocksTableAdapter.GetStockByBookID(lend.bookID) != 0)
                         {
                             lendsTableAdapter.Create(lend.bookID, lend.visitorID, lend.lendDate, lend.tenancy, lend.state, lend.penaltyFee);
                             stocksTableAdapter.DecreaseNumber(lend.bookID);
+                            Lends.isChanged = true;
                         }
-                        else MessageBox.Show("This book is out of stocks", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        else
+                        {
+                            MessageBox.Show("This book is out of stocks", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            Lends.isChanged = false;
+                        }
                     }
-                    else MessageBox.Show("A visitor can currently lend at most 3 books!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
+                    else
+                    {
+                        MessageBox.Show("A visitor can currently lend at most 3 books!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        Lends.isChanged = false;
+                    }
                 }
-                else MessageBox.Show("This visitor has already lent the book and not returned back yet!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
+                else
+                {
+                    MessageBox.Show("This visitor has already lent the book and not returned back yet!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    Lends.isChanged = false;
+                }
             }
             catch (DBConcurrencyException)
             {
                 MessageBox.Show("An error occured while crud operation on database!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Lends.isChanged = false;
             }
             finally
             {

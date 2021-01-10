@@ -18,7 +18,7 @@ namespace BIM313_Group5_FinalProject.ChildComponents
         {
             InitializeComponent();
         }
-
+        public static bool isChanged { get; set; }
         private void ViewBooks_Load(object sender, EventArgs e)
         {
             this.booksTableAdapter.FillGrid(this.lMSDBDataSet.Books);
@@ -53,8 +53,11 @@ namespace BIM313_Group5_FinalProject.ChildComponents
                 AddBook addBook = new AddBook();
                 addBook.ShowDialog();
 
-                InformationForm information = new InformationForm("New book is added.", "Info");
-                information.Show();
+                if (isChanged)
+                {
+                    InformationForm information = new InformationForm("New book is added.", "Info");
+                    information.Show();
+                }
             }
             catch(Exception)
             {

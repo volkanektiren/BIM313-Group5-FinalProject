@@ -18,6 +18,8 @@ namespace BIM313_Group5_FinalProject.ChildComponents
             InitializeComponent();
         }
 
+        public static bool isChanged { get; set; }
+
         private void ViewAuthors_Load(object sender, EventArgs e)
         {
             try
@@ -42,8 +44,11 @@ namespace BIM313_Group5_FinalProject.ChildComponents
                 AddAuthor addAuthor = new AddAuthor();
                 addAuthor.ShowDialog();
 
-                InformationForm information = new InformationForm("An author is added.", "Info");
-                information.Show();
+                if (isChanged)
+                {
+                    InformationForm information = new InformationForm("An author is added.", "Info");
+                    information.Show();
+                }
             }
             catch(Exception)
             {
@@ -63,8 +68,12 @@ namespace BIM313_Group5_FinalProject.ChildComponents
                 editAuthor.authorID = Int32.Parse(authorsDataGridView.Rows[authorsDataGridView.SelectedRows[0].Index].Cells[0].Value.ToString());
                 editAuthor.ShowDialog();
 
-                InformationForm information = new InformationForm("Selected author is edited.", "Info");
-                information.Show();
+                if (isChanged)
+                {
+                    InformationForm information = new InformationForm("Selected author is edited.", "Info");
+                    information.Show();
+                }
+
             }
             catch (ArgumentOutOfRangeException)
             {

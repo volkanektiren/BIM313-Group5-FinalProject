@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using BIM313_Group5_FinalProject.Models;
+using BIM313_Group5_FinalProject.ChildComponents;
 
 namespace BIM313_Group5_FinalProject
 {
@@ -34,14 +35,17 @@ namespace BIM313_Group5_FinalProject
                 stock.number = (short)numericUpDown1.Value;
 
                 stocksTableAdapter.Create(stock.number, stock.bookID);
+                ViewStocks.isChanged = true;
             }
             catch(System.Data.OleDb.OleDbException)
             {
                 MessageBox.Show("A stock record for this book already exist! Record declined...", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ViewStocks.isChanged = false;
             }
             catch (DBConcurrencyException)
             {
                 MessageBox.Show("An errer occured while crud operation on database!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ViewStocks.isChanged = false;
             }
             finally
             {

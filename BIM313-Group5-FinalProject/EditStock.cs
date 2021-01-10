@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using BIM313_Group5_FinalProject.Models;
+using BIM313_Group5_FinalProject.ChildComponents;
 
 namespace BIM313_Group5_FinalProject
 {
@@ -33,10 +34,12 @@ namespace BIM313_Group5_FinalProject
                 stock.number = (short)numericUpDown1.Value;
 
                 stocksTableAdapter.UpdateStock(stock.number, this.bookID);
+                ViewStocks.isChanged = true;
             }
             catch (DBConcurrencyException)
             {
                 MessageBox.Show("An errer occured while crud operation on database!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ViewStocks.isChanged = false;
             }
             finally
             {

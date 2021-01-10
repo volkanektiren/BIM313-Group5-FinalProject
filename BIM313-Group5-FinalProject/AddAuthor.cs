@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using BIM313_Group5_FinalProject.Models;
+using BIM313_Group5_FinalProject.ChildComponents;
 
 namespace BIM313_Group5_FinalProject
 {
@@ -27,10 +28,12 @@ namespace BIM313_Group5_FinalProject
                 author.lastName = textBox2.Text;
 
                 authorsTableAdapter.Create(author.firstName, author.lastName);
+                ViewAuthors.isChanged = true;
             }
             catch (DBConcurrencyException)
             {
                 MessageBox.Show("An errer occured while crud operation on database!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ViewAuthors.isChanged = false;
             }
             finally
             {

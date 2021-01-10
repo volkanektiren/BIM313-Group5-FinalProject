@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using BIM313_Group5_FinalProject.Models;
+using BIM313_Group5_FinalProject.ChildComponents;
 
 namespace BIM313_Group5_FinalProject
 {
@@ -44,10 +45,12 @@ namespace BIM313_Group5_FinalProject
                 visitor.email = textBox4.Text;
 
                 visitorsTableAdapter.Create(visitor.TCKN, visitor.firstName, visitor.lastName, visitor.gender, visitor.age, visitor.email);
+                Visitors.isChanged = true;
             }
             catch (DBConcurrencyException)
             {
                 MessageBox.Show("An errer occured while crud operation on database!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Visitors.isChanged = false;
             }
             finally
             {

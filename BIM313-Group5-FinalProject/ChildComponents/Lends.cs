@@ -18,6 +18,7 @@ namespace BIM313_Group5_FinalProject.ChildComponents
             InitializeComponent();
         }
 
+        public static bool isChanged { get; set; }
         private void Lends_Load(object sender, EventArgs e)
         {
             this.lendsTableAdapter.FillGrid(this.lMSDBDataSet.Lends);
@@ -45,8 +46,12 @@ namespace BIM313_Group5_FinalProject.ChildComponents
                 LendBook lendBook = new LendBook();
                 lendBook.ShowDialog();
 
-                InformationForm information = new InformationForm("A book is lent.", "Info");
-                information.Show();
+                if (isChanged)
+                {
+                    InformationForm information = new InformationForm("A book is lent.", "Info");
+                    information.Show();
+                }
+
             }
             catch (Exception)
             {

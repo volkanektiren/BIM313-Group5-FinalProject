@@ -18,6 +18,8 @@ namespace BIM313_Group5_FinalProject.ChildComponents
             InitializeComponent();
         }
 
+        public static bool isChanged { get; set; }
+
         private void ViewStocks_Load(object sender, EventArgs e)
         {
             // TODO: This line of code loads data into the 'lMSDBDataSet.Stocks' table. You can move, or remove it, as needed.
@@ -32,8 +34,11 @@ namespace BIM313_Group5_FinalProject.ChildComponents
                 NewRecord newRecord = new NewRecord();
                 newRecord.ShowDialog();
 
-                InformationForm information = new InformationForm("New stock record is added.", "Info");
-                information.Show();
+                if (isChanged)
+                {
+                    InformationForm information = new InformationForm("New stock record is added.", "Info");
+                    information.Show();
+                }
             }
             catch(Exception)
             {
@@ -53,8 +58,12 @@ namespace BIM313_Group5_FinalProject.ChildComponents
                 editStock.bookID = Int32.Parse(stocksDataGridView.Rows[stocksDataGridView.SelectedRows[0].Index].Cells[0].Value.ToString());
                 editStock.ShowDialog();
 
-                InformationForm information = new InformationForm("Selected stock record is edited.", "Info");
-                information.Show();
+                if (isChanged)
+                {
+                    InformationForm information = new InformationForm("Selected stock record is edited.", "Info");
+                    information.Show();
+                }
+
             }
             catch (ArgumentOutOfRangeException)
             {

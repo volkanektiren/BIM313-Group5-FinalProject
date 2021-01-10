@@ -18,6 +18,7 @@ namespace BIM313_Group5_FinalProject.ChildComponents
             InitializeComponent();
         }
 
+        public static bool isChanged { get; set; }
         private void Visitors_Load(object sender, EventArgs e)
         {
             // TODO: This line of code loads data into the 'lMSDBDataSet.Visitors' table. You can move, or remove it, as needed.
@@ -47,8 +48,12 @@ namespace BIM313_Group5_FinalProject.ChildComponents
                 AddVisitor addVisitor = new AddVisitor();
                 addVisitor.ShowDialog();
 
-                InformationForm information = new InformationForm("New visitor is added.", "Info");
-                information.Show();
+                if (isChanged)
+                {
+                    InformationForm information = new InformationForm("New visitor is added.", "Info");
+                    information.Show();
+                }
+
             }
             catch (Exception)
             {
@@ -68,8 +73,12 @@ namespace BIM313_Group5_FinalProject.ChildComponents
                 editVisitor.visitorID = Int32.Parse(visitorsDataGridView.Rows[visitorsDataGridView.SelectedRows[0].Index].Cells[0].Value.ToString());
                 editVisitor.ShowDialog();
 
-                InformationForm information = new InformationForm("Selected visitor is edited.", "Info");
-                information.Show();
+                if (IsChanged)
+                {
+                    InformationForm information = new InformationForm("Selected visitor is edited.", "Info");
+                    information.Show();
+                }
+
             }
             catch (ArgumentOutOfRangeException)
             {
