@@ -20,15 +20,7 @@ namespace BIM313_Group5_FinalProject.ChildComponents
 
         private void ViewBooks_Load(object sender, EventArgs e)
         {
-            try
-            {
-                this.booksTableAdapter.FillGrid(this.lMSDBDataSet.Books);
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("Something wrong!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-
+            this.booksTableAdapter.FillGrid(this.lMSDBDataSet.Books);
         }
 
         private void tbParameter_TextChanged(object sender, EventArgs e)

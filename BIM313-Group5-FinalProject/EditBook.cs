@@ -38,7 +38,7 @@ namespace BIM313_Group5_FinalProject
             {
                 Book book = new Book();
                 book.title = textBox1.Text;
-                book.publicationYear = dateTimePicker1.Value;
+                book.publicationYear = dateTimePicker1.Value.Date;
                 book.pageNumber = (short)numericUpDown1.Value;
                 book.authorID = (int)comboBox1.SelectedValue;
                 book.genreID = (int)comboBox2.SelectedValue;

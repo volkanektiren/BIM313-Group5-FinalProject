@@ -26,10 +26,10 @@ We will create a database for the program which includes following tables.
 5. Loan table: ID, visitorFullname, lendDate, tenancy, bookID
 
 # New Features
-1. Visitor table: ID, TCKN, FirstName, LastName, Gender, EMail, Age
-2. Genre table: ID, genreName
+1. Visitors table: ID, TCKN, FirstName, LastName, Gender, EMail, Age
+2. Genres table: ID, genreName
 3. genreID column is added to Books table.
-4. Loan(Lend) table keeps visitorID instead of visitorFullName
-5. A visitor is currently able to lend at most 3 books.
-6. Visitor will get an e-mail when there is 1 day left to give back date of lending from program.
+4. Loan(Lend) table keeps visitorID instead of visitorFullName, and penaltyFee is added.
+5. A visitor is currently able to lend at most 3 books and there will be a payment if the visitor would not return back the book on time.(5 lira per day)
+6. Visitor will get an e-mail when there is 3 day left to give back date of lending from program.
 7. The program shows a small information form after every event.

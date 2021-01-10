@@ -12,8 +12,9 @@ namespace BIM313_Group5_FinalProject.Models
         public int bookID { get; set; }
         public int visitorID { get; set; }
         public DateTime lendDate { get; set; }
-        public int tenancy { get; set; }
+        public short tenancy { get; set; }
         public bool state { get; set; }
+        public int penaltyFee { get; set; }
 
     }
 }

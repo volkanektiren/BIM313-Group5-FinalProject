@@ -30,131 +30,29 @@ namespace BIM313_Group5_FinalProject.ChildComponents
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.booksDataGridView = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.booksBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.lMSDBDataSet = new BIM313_Group5_FinalProject.LMSDBDataSet();
             this.label1 = new System.Windows.Forms.Label();
             this.tbParameter = new System.Windows.Forms.TextBox();
             this.cbSearchby = new System.Windows.Forms.ComboBox();
             this.addBookbtn = new System.Windows.Forms.Button();
             this.editBookbtn = new System.Windows.Forms.Button();
             this.deleteBookbtn = new System.Windows.Forms.Button();
+            this.refreshbtn = new System.Windows.Forms.Button();
+            this.lMSDBDataSet = new BIM313_Group5_FinalProject.LMSDBDataSet();
+            this.booksBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.booksTableAdapter = new BIM313_Group5_FinalProject.LMSDBDataSetTableAdapters.BooksTableAdapter();
             this.tableAdapterManager = new BIM313_Group5_FinalProject.LMSDBDataSetTableAdapters.TableAdapterManager();
-            this.refreshbtn = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.booksDataGridView)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.booksBindingSource)).BeginInit();
+            this.booksDataGridView = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Author = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Genre = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Publisher = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.lMSDBDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.booksBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.booksDataGridView)).BeginInit();
             this.SuspendLayout();
-            // 
-            // booksDataGridView
-            // 
-            this.booksDataGridView.AllowUserToAddRows = false;
-            this.booksDataGridView.AllowUserToDeleteRows = false;
-            this.booksDataGridView.AllowUserToResizeColumns = false;
-            this.booksDataGridView.AllowUserToResizeRows = false;
-            this.booksDataGridView.AutoGenerateColumns = false;
-            this.booksDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
-            this.booksDataGridView.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
-            this.booksDataGridView.BackgroundColor = System.Drawing.SystemColors.ActiveCaption;
-            this.booksDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.booksDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn1,
-            this.dataGridViewTextBoxColumn2,
-            this.dataGridViewTextBoxColumn3,
-            this.dataGridViewTextBoxColumn4,
-            this.dataGridViewTextBoxColumn5,
-            this.dataGridViewTextBoxColumn6,
-            this.dataGridViewTextBoxColumn7});
-            this.booksDataGridView.DataSource = this.booksBindingSource;
-            this.booksDataGridView.Location = new System.Drawing.Point(12, 12);
-            this.booksDataGridView.MultiSelect = false;
-            this.booksDataGridView.Name = "booksDataGridView";
-            this.booksDataGridView.ReadOnly = true;
-            this.booksDataGridView.RowHeadersWidth = 62;
-            this.booksDataGridView.RowTemplate.Height = 28;
-            this.booksDataGridView.Size = new System.Drawing.Size(950, 700);
-            this.booksDataGridView.TabIndex = 1;
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.DataPropertyName = "ID";
-            this.dataGridViewTextBoxColumn1.HeaderText = "ID";
-            this.dataGridViewTextBoxColumn1.MinimumWidth = 8;
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
-            this.dataGridViewTextBoxColumn1.Width = 62;
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this.dataGridViewTextBoxColumn2.DataPropertyName = "Title";
-            this.dataGridViewTextBoxColumn2.HeaderText = "Title";
-            this.dataGridViewTextBoxColumn2.MinimumWidth = 8;
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            this.dataGridViewTextBoxColumn2.ReadOnly = true;
-            this.dataGridViewTextBoxColumn2.Width = 74;
-            // 
-            // dataGridViewTextBoxColumn3
-            // 
-            this.dataGridViewTextBoxColumn3.DataPropertyName = "PublicationYear";
-            this.dataGridViewTextBoxColumn3.HeaderText = "Publication Year";
-            this.dataGridViewTextBoxColumn3.MinimumWidth = 8;
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            this.dataGridViewTextBoxColumn3.ReadOnly = true;
-            this.dataGridViewTextBoxColumn3.Width = 147;
-            // 
-            // dataGridViewTextBoxColumn4
-            // 
-            this.dataGridViewTextBoxColumn4.DataPropertyName = "PageNumber";
-            this.dataGridViewTextBoxColumn4.HeaderText = "Number of Pages";
-            this.dataGridViewTextBoxColumn4.MinimumWidth = 8;
-            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            this.dataGridViewTextBoxColumn4.ReadOnly = true;
-            this.dataGridViewTextBoxColumn4.Width = 114;
-            // 
-            // dataGridViewTextBoxColumn5
-            // 
-            this.dataGridViewTextBoxColumn5.DataPropertyName = "Author";
-            this.dataGridViewTextBoxColumn5.HeaderText = "Author";
-            this.dataGridViewTextBoxColumn5.MinimumWidth = 8;
-            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
-            this.dataGridViewTextBoxColumn5.ReadOnly = true;
-            this.dataGridViewTextBoxColumn5.Width = 93;
-            // 
-            // dataGridViewTextBoxColumn6
-            // 
-            this.dataGridViewTextBoxColumn6.DataPropertyName = "GenreName";
-            this.dataGridViewTextBoxColumn6.HeaderText = "Genre";
-            this.dataGridViewTextBoxColumn6.MinimumWidth = 8;
-            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
-            this.dataGridViewTextBoxColumn6.ReadOnly = true;
-            this.dataGridViewTextBoxColumn6.Width = 90;
-            // 
-            // dataGridViewTextBoxColumn7
-            // 
-            this.dataGridViewTextBoxColumn7.DataPropertyName = "PublisherName";
-            this.dataGridViewTextBoxColumn7.HeaderText = "Publisher";
-            this.dataGridViewTextBoxColumn7.MinimumWidth = 8;
-            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
-            this.dataGridViewTextBoxColumn7.ReadOnly = true;
-            this.dataGridViewTextBoxColumn7.Width = 110;
-            // 
-            // booksBindingSource
-            // 
-            this.booksBindingSource.DataMember = "Books";
-            this.booksBindingSource.DataSource = this.lMSDBDataSet;
-            // 
-            // lMSDBDataSet
-            // 
-            this.lMSDBDataSet.DataSetName = "LMSDBDataSet";
-            this.lMSDBDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // label1
             // 
@@ -229,6 +127,28 @@ namespace BIM313_Group5_FinalProject.ChildComponents
             this.deleteBookbtn.UseVisualStyleBackColor = false;
             this.deleteBookbtn.Click += new System.EventHandler(this.deleteBookbtn_Click);
             // 
+            // refreshbtn
+            // 
+            this.refreshbtn.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.refreshbtn.ForeColor = System.Drawing.SystemColors.Control;
+            this.refreshbtn.Location = new System.Drawing.Point(986, 418);
+            this.refreshbtn.Name = "refreshbtn";
+            this.refreshbtn.Size = new System.Drawing.Size(282, 48);
+            this.refreshbtn.TabIndex = 11;
+            this.refreshbtn.Text = "Refresh All";
+            this.refreshbtn.UseVisualStyleBackColor = false;
+            this.refreshbtn.Click += new System.EventHandler(this.refreshbtn_Click);
+            // 
+            // lMSDBDataSet
+            // 
+            this.lMSDBDataSet.DataSetName = "LMSDBDataSet";
+            this.lMSDBDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // booksBindingSource
+            // 
+            this.booksBindingSource.DataMember = "Books";
+            this.booksBindingSource.DataSource = this.lMSDBDataSet;
+            // 
             // booksTableAdapter
             // 
             this.booksTableAdapter.ClearBeforeFill = true;
@@ -245,23 +165,104 @@ namespace BIM313_Group5_FinalProject.ChildComponents
             this.tableAdapterManager.UpdateOrder = BIM313_Group5_FinalProject.LMSDBDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             this.tableAdapterManager.VisitorsTableAdapter = null;
             // 
-            // refreshbtn
+            // booksDataGridView
             // 
-            this.refreshbtn.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.refreshbtn.ForeColor = System.Drawing.SystemColors.Control;
-            this.refreshbtn.Location = new System.Drawing.Point(986, 418);
-            this.refreshbtn.Name = "refreshbtn";
-            this.refreshbtn.Size = new System.Drawing.Size(282, 48);
-            this.refreshbtn.TabIndex = 11;
-            this.refreshbtn.Text = "Refrest All";
-            this.refreshbtn.UseVisualStyleBackColor = false;
-            this.refreshbtn.Click += new System.EventHandler(this.refreshbtn_Click);
+            this.booksDataGridView.AllowUserToAddRows = false;
+            this.booksDataGridView.AllowUserToDeleteRows = false;
+            this.booksDataGridView.AllowUserToResizeColumns = false;
+            this.booksDataGridView.AllowUserToResizeRows = false;
+            this.booksDataGridView.AutoGenerateColumns = false;
+            this.booksDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.booksDataGridView.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.booksDataGridView.BackgroundColor = System.Drawing.SystemColors.ActiveCaption;
+            this.booksDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.booksDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn1,
+            this.dataGridViewTextBoxColumn2,
+            this.dataGridViewTextBoxColumn3,
+            this.dataGridViewTextBoxColumn4,
+            this.Author,
+            this.Genre,
+            this.Publisher});
+            this.booksDataGridView.DataSource = this.booksBindingSource;
+            this.booksDataGridView.Location = new System.Drawing.Point(12, 8);
+            this.booksDataGridView.MultiSelect = false;
+            this.booksDataGridView.Name = "booksDataGridView";
+            this.booksDataGridView.ReadOnly = true;
+            this.booksDataGridView.RowHeadersWidth = 62;
+            this.booksDataGridView.RowTemplate.Height = 28;
+            this.booksDataGridView.Size = new System.Drawing.Size(950, 700);
+            this.booksDataGridView.TabIndex = 12;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "ID";
+            this.dataGridViewTextBoxColumn1.HeaderText = "ID";
+            this.dataGridViewTextBoxColumn1.MinimumWidth = 8;
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            this.dataGridViewTextBoxColumn1.Width = 62;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.DataPropertyName = "Title";
+            this.dataGridViewTextBoxColumn2.HeaderText = "Title";
+            this.dataGridViewTextBoxColumn2.MinimumWidth = 8;
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.ReadOnly = true;
+            this.dataGridViewTextBoxColumn2.Width = 74;
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.DataPropertyName = "PublicationYear";
+            this.dataGridViewTextBoxColumn3.HeaderText = "PublicationYear";
+            this.dataGridViewTextBoxColumn3.MinimumWidth = 8;
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.ReadOnly = true;
+            this.dataGridViewTextBoxColumn3.Width = 156;
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            this.dataGridViewTextBoxColumn4.DataPropertyName = "PageNumber";
+            this.dataGridViewTextBoxColumn4.HeaderText = "PageNumber";
+            this.dataGridViewTextBoxColumn4.MinimumWidth = 8;
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            this.dataGridViewTextBoxColumn4.ReadOnly = true;
+            this.dataGridViewTextBoxColumn4.Width = 138;
+            // 
+            // Author
+            // 
+            this.Author.DataPropertyName = "Author";
+            this.Author.HeaderText = "Author";
+            this.Author.MinimumWidth = 8;
+            this.Author.Name = "Author";
+            this.Author.ReadOnly = true;
+            this.Author.Width = 93;
+            // 
+            // Genre
+            // 
+            this.Genre.DataPropertyName = "Genre";
+            this.Genre.HeaderText = "Genre";
+            this.Genre.MinimumWidth = 8;
+            this.Genre.Name = "Genre";
+            this.Genre.ReadOnly = true;
+            this.Genre.Width = 90;
+            // 
+            // Publisher
+            // 
+            this.Publisher.DataPropertyName = "Publisher";
+            this.Publisher.HeaderText = "Publisher";
+            this.Publisher.MinimumWidth = 8;
+            this.Publisher.Name = "Publisher";
+            this.Publisher.ReadOnly = true;
+            this.Publisher.Width = 110;
             // 
             // ViewBooks
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1280, 720);
+            this.ClientSize = new System.Drawing.Size(1288, 720);
+            this.Controls.Add(this.booksDataGridView);
             this.Controls.Add(this.refreshbtn);
             this.Controls.Add(this.deleteBookbtn);
             this.Controls.Add(this.editBookbtn);
@@ -269,31 +270,20 @@ namespace BIM313_Group5_FinalProject.ChildComponents
             this.Controls.Add(this.label1);
             this.Controls.Add(this.tbParameter);
             this.Controls.Add(this.cbSearchby);
-            this.Controls.Add(this.booksDataGridView);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "ViewBooks";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ViewBooks";
             this.Load += new System.EventHandler(this.ViewBooks_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.booksDataGridView)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.booksBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lMSDBDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.booksBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.booksDataGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private LMSDBDataSet lMSDBDataSet;
-        private System.Windows.Forms.BindingSource booksBindingSource;
-        private LMSDBDataSetTableAdapters.BooksTableAdapter booksTableAdapter;
-        private LMSDBDataSetTableAdapters.TableAdapterManager tableAdapterManager;
-        private System.Windows.Forms.DataGridView booksDataGridView;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
@@ -304,5 +294,17 @@ namespace BIM313_Group5_FinalProject.ChildComponents
         private System.Windows.Forms.Button editBookbtn;
         private System.Windows.Forms.Button deleteBookbtn;
         private System.Windows.Forms.Button refreshbtn;
+        private LMSDBDataSet lMSDBDataSet;
+        private System.Windows.Forms.BindingSource booksBindingSource;
+        private LMSDBDataSetTableAdapters.BooksTableAdapter booksTableAdapter;
+        private LMSDBDataSetTableAdapters.TableAdapterManager tableAdapterManager;
+        private System.Windows.Forms.DataGridView booksDataGridView;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Author;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Genre;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Publisher;
     }
 }

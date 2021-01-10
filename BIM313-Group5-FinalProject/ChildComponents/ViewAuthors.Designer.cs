@@ -31,13 +31,13 @@ namespace BIM313_Group5_FinalProject.ChildComponents
         {
             this.components = new System.ComponentModel.Container();
             this.authorsDataGridView = new System.Windows.Forms.DataGridView();
-            this.label1 = new System.Windows.Forms.Label();
-            this.tbParameter = new System.Windows.Forms.TextBox();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.authorsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.lMSDBDataSet = new BIM313_Group5_FinalProject.LMSDBDataSet();
+            this.label1 = new System.Windows.Forms.Label();
+            this.tbParameter = new System.Windows.Forms.TextBox();
             this.authorsTableAdapter = new BIM313_Group5_FinalProject.LMSDBDataSetTableAdapters.AuthorsTableAdapter();
             this.tableAdapterManager = new BIM313_Group5_FinalProject.LMSDBDataSetTableAdapters.TableAdapterManager();
             this.refreshbtn = new System.Windows.Forms.Button();
@@ -73,28 +73,6 @@ namespace BIM313_Group5_FinalProject.ChildComponents
             this.authorsDataGridView.RowTemplate.Height = 28;
             this.authorsDataGridView.Size = new System.Drawing.Size(950, 700);
             this.authorsDataGridView.TabIndex = 1;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label1.Location = new System.Drawing.Point(1052, 42);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(145, 22);
-            this.label1.TabIndex = 8;
-            this.label1.Text = "Search By Name";
-            // 
-            // tbParameter
-            // 
-            this.tbParameter.Location = new System.Drawing.Point(985, 69);
-            this.tbParameter.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.tbParameter.Name = "tbParameter";
-            this.tbParameter.Size = new System.Drawing.Size(282, 26);
-            this.tbParameter.TabIndex = 9;
-            this.tbParameter.TextChanged += new System.EventHandler(this.tbParameter_TextChanged);
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -133,6 +111,28 @@ namespace BIM313_Group5_FinalProject.ChildComponents
             this.lMSDBDataSet.DataSetName = "LMSDBDataSet";
             this.lMSDBDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.label1.Location = new System.Drawing.Point(1052, 42);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(145, 22);
+            this.label1.TabIndex = 8;
+            this.label1.Text = "Search By Name";
+            // 
+            // tbParameter
+            // 
+            this.tbParameter.Location = new System.Drawing.Point(985, 69);
+            this.tbParameter.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.tbParameter.Name = "tbParameter";
+            this.tbParameter.Size = new System.Drawing.Size(282, 26);
+            this.tbParameter.TabIndex = 9;
+            this.tbParameter.TextChanged += new System.EventHandler(this.tbParameter_TextChanged);
+            // 
             // authorsTableAdapter
             // 
             this.authorsTableAdapter.ClearBeforeFill = true;
@@ -156,7 +156,7 @@ namespace BIM313_Group5_FinalProject.ChildComponents
             this.refreshbtn.Name = "refreshbtn";
             this.refreshbtn.Size = new System.Drawing.Size(282, 48);
             this.refreshbtn.TabIndex = 15;
-            this.refreshbtn.Text = "Refrest All";
+            this.refreshbtn.Text = "Refresh All";
             this.refreshbtn.UseVisualStyleBackColor = false;
             this.refreshbtn.Click += new System.EventHandler(this.refreshbtn_Click);
             // 

@@ -179,7 +179,7 @@ namespace BIM313_Group5_FinalProject.ChildComponents
             this.refreshbtn.Name = "refreshbtn";
             this.refreshbtn.Size = new System.Drawing.Size(282, 48);
             this.refreshbtn.TabIndex = 18;
-            this.refreshbtn.Text = "Refrest All";
+            this.refreshbtn.Text = "Refresh All";
             this.refreshbtn.UseVisualStyleBackColor = false;
             this.refreshbtn.Click += new System.EventHandler(this.refreshbtn_Click);
             // 

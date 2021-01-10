@@ -37,8 +37,11 @@ namespace BIM313_Group5_FinalProject
             this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.booksBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.lMSDBDataSet = new BIM313_Group5_FinalProject.LMSDBDataSet();
+            this.genresBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.comboBox3 = new System.Windows.Forms.ComboBox();
+            this.publishersBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.authorsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.label3 = new System.Windows.Forms.Label();
@@ -46,18 +49,15 @@ namespace BIM313_Group5_FinalProject
             this.label1 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.booksTableAdapter = new BIM313_Group5_FinalProject.LMSDBDataSetTableAdapters.BooksTableAdapter();
-            this.authorsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.authorsTableAdapter = new BIM313_Group5_FinalProject.LMSDBDataSetTableAdapters.AuthorsTableAdapter();
-            this.genresBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.genresTableAdapter = new BIM313_Group5_FinalProject.LMSDBDataSetTableAdapters.GenresTableAdapter();
-            this.publishersBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.publishersTableAdapter = new BIM313_Group5_FinalProject.LMSDBDataSetTableAdapters.PublishersTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.booksBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lMSDBDataSet)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.authorsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.genresBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.publishersBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.authorsBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.SuspendLayout();
             // 
             // button1
@@ -119,6 +119,11 @@ namespace BIM313_Group5_FinalProject
             this.lMSDBDataSet.DataSetName = "LMSDBDataSet";
             this.lMSDBDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
+            // genresBindingSource
+            // 
+            this.genresBindingSource.DataMember = "Genres";
+            this.genresBindingSource.DataSource = this.lMSDBDataSet;
+            // 
             // comboBox3
             // 
             this.comboBox3.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.booksBindingSource, "PublisherID", true));
@@ -131,6 +136,11 @@ namespace BIM313_Group5_FinalProject
             this.comboBox3.TabIndex = 22;
             this.comboBox3.ValueMember = "ID";
             // 
+            // publishersBindingSource
+            // 
+            this.publishersBindingSource.DataMember = "Publishers";
+            this.publishersBindingSource.DataSource = this.lMSDBDataSet;
+            // 
             // comboBox1
             // 
             this.comboBox1.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.booksBindingSource, "AuthorID", true));
@@ -142,6 +152,11 @@ namespace BIM313_Group5_FinalProject
             this.comboBox1.Size = new System.Drawing.Size(317, 28);
             this.comboBox1.TabIndex = 21;
             this.comboBox1.ValueMember = "ID";
+            // 
+            // authorsBindingSource
+            // 
+            this.authorsBindingSource.DataMember = "Authors";
+            this.authorsBindingSource.DataSource = this.lMSDBDataSet;
             // 
             // numericUpDown1
             // 
@@ -159,6 +174,7 @@ namespace BIM313_Group5_FinalProject
             // dateTimePicker1
             // 
             this.dateTimePicker1.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.booksBindingSource, "PublicationYear", true));
+            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dateTimePicker1.Location = new System.Drawing.Point(16, 101);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(317, 26);
@@ -203,28 +219,13 @@ namespace BIM313_Group5_FinalProject
             // 
             this.booksTableAdapter.ClearBeforeFill = true;
             // 
-            // authorsBindingSource
-            // 
-            this.authorsBindingSource.DataMember = "Authors";
-            this.authorsBindingSource.DataSource = this.lMSDBDataSet;
-            // 
             // authorsTableAdapter
             // 
             this.authorsTableAdapter.ClearBeforeFill = true;
             // 
-            // genresBindingSource
-            // 
-            this.genresBindingSource.DataMember = "Genres";
-            this.genresBindingSource.DataSource = this.lMSDBDataSet;
-            // 
             // genresTableAdapter
             // 
             this.genresTableAdapter.ClearBeforeFill = true;
-            // 
-            // publishersBindingSource
-            // 
-            this.publishersBindingSource.DataMember = "Publishers";
-            this.publishersBindingSource.DataSource = this.lMSDBDataSet;
             // 
             // publishersTableAdapter
             // 
@@ -256,10 +257,10 @@ namespace BIM313_Group5_FinalProject
             this.Load += new System.EventHandler(this.EditBook_Load);
             ((System.ComponentModel.ISupportInitialize)(this.booksBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lMSDBDataSet)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.authorsBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.genresBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.publishersBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.authorsBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
