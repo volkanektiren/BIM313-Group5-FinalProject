@@ -73,7 +73,7 @@ namespace BIM313_Group5_FinalProject.ChildComponents
                 editVisitor.visitorID = Int32.Parse(visitorsDataGridView.Rows[visitorsDataGridView.SelectedRows[0].Index].Cells[0].Value.ToString());
                 editVisitor.ShowDialog();
 
-                if (IsChanged)
+                if (isChanged)
                 {
                     InformationForm information = new InformationForm("Selected visitor is edited.", "Info");
                     information.Show();
