@@ -25,7 +25,7 @@ namespace BIM313_Group5_FinalProject
                 Lend lend = new Lend();
                 lend.bookID = (int)comboBox1.SelectedValue;
                 lend.visitorID = (int)comboBox2.SelectedValue;
-                lend.lendDate = dateTimePicker1.Value.Date;
+                lend.lendDate = DateTime.Now.Date;
                 lend.tenancy = (short)(booksTableAdapter.FillPageNumberByID(lend.bookID)/5);
                 lend.state = false;
                 lend.penaltyFee = 0;
@@ -33,7 +33,14 @@ namespace BIM313_Group5_FinalProject
                 if (lendsTableAdapter.IsExist(lend.bookID, lend.visitorID) == 0)
                 {
                     if((int)lendsTableAdapter.CountNotReturnedLendsByVisitorID(lend.visitorID) < 3)
-                        lendsTableAdapter.Create(lend.bookID, lend.visitorID, lend.lendDate, lend.tenancy, lend.state, lend.penaltyFee);
+                    {
+                        if (stocksTableAdapter.GetStockByBookID(lend.bookID) != 0)
+                        {
+                            lendsTableAdapter.Create(lend.bookID, lend.visitorID, lend.lendDate, lend.tenancy, lend.state, lend.penaltyFee);
+                            stocksTableAdapter.DecreaseNumber(lend.bookID);
+                        }
+                        else MessageBox.Show("This book is out of stocks", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
                     else MessageBox.Show("A visitor can currently lend at most 3 books!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 }

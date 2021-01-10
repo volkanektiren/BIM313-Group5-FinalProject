@@ -31,16 +31,6 @@ namespace BIM313_Group5_FinalProject.ChildComponents
         {
             this.components = new System.ComponentModel.Container();
             this.lendsDataGridView = new System.Windows.Forms.DataGridView();
-            this.label1 = new System.Windows.Forms.Label();
-            this.tbParameter = new System.Windows.Forms.TextBox();
-            this.cbSearchby = new System.Windows.Forms.ComboBox();
-            this.lendBookbtn = new System.Windows.Forms.Button();
-            this.returnBookbtn = new System.Windows.Forms.Button();
-            this.refreshbtn = new System.Windows.Forms.Button();
-            this.lendsBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.lMSDBDataSet = new BIM313_Group5_FinalProject.LMSDBDataSet();
-            this.lendsTableAdapter = new BIM313_Group5_FinalProject.LMSDBDataSetTableAdapters.LendsTableAdapter();
-            this.tableAdapterManager = new BIM313_Group5_FinalProject.LMSDBDataSetTableAdapters.TableAdapterManager();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Book = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Visitor = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -48,6 +38,18 @@ namespace BIM313_Group5_FinalProject.ChildComponents
             this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewCheckBoxColumn1 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.PenaltyFee = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lendsBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.lMSDBDataSet = new BIM313_Group5_FinalProject.LMSDBDataSet();
+            this.label1 = new System.Windows.Forms.Label();
+            this.tbParameter = new System.Windows.Forms.TextBox();
+            this.cbSearchby = new System.Windows.Forms.ComboBox();
+            this.lendBookbtn = new System.Windows.Forms.Button();
+            this.returnBookbtn = new System.Windows.Forms.Button();
+            this.refreshbtn = new System.Windows.Forms.Button();
+            this.lendsTableAdapter = new BIM313_Group5_FinalProject.LMSDBDataSetTableAdapters.LendsTableAdapter();
+            this.tableAdapterManager = new BIM313_Group5_FinalProject.LMSDBDataSetTableAdapters.TableAdapterManager();
+            this.timer = new System.Windows.Forms.Timer(this.components);
+            this.stocksTableAdapter = new BIM313_Group5_FinalProject.LMSDBDataSetTableAdapters.StocksTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.lendsDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lendsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lMSDBDataSet)).BeginInit();
@@ -81,6 +83,79 @@ namespace BIM313_Group5_FinalProject.ChildComponents
             this.lendsDataGridView.RowTemplate.Height = 28;
             this.lendsDataGridView.Size = new System.Drawing.Size(950, 696);
             this.lendsDataGridView.TabIndex = 1;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "ID";
+            this.dataGridViewTextBoxColumn1.HeaderText = "ID";
+            this.dataGridViewTextBoxColumn1.MinimumWidth = 8;
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            this.dataGridViewTextBoxColumn1.Width = 62;
+            // 
+            // Book
+            // 
+            this.Book.DataPropertyName = "Book";
+            this.Book.HeaderText = "Book";
+            this.Book.MinimumWidth = 8;
+            this.Book.Name = "Book";
+            this.Book.ReadOnly = true;
+            this.Book.Width = 82;
+            // 
+            // Visitor
+            // 
+            this.Visitor.DataPropertyName = "Visitor";
+            this.Visitor.HeaderText = "Visitor";
+            this.Visitor.MinimumWidth = 8;
+            this.Visitor.Name = "Visitor";
+            this.Visitor.ReadOnly = true;
+            this.Visitor.Width = 89;
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            this.dataGridViewTextBoxColumn4.DataPropertyName = "LendDate";
+            this.dataGridViewTextBoxColumn4.HeaderText = "LendDate";
+            this.dataGridViewTextBoxColumn4.MinimumWidth = 8;
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            this.dataGridViewTextBoxColumn4.ReadOnly = true;
+            this.dataGridViewTextBoxColumn4.Width = 116;
+            // 
+            // dataGridViewTextBoxColumn5
+            // 
+            this.dataGridViewTextBoxColumn5.DataPropertyName = "Tenancy";
+            this.dataGridViewTextBoxColumn5.HeaderText = "Tenancy";
+            this.dataGridViewTextBoxColumn5.MinimumWidth = 8;
+            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            this.dataGridViewTextBoxColumn5.ReadOnly = true;
+            this.dataGridViewTextBoxColumn5.Width = 105;
+            // 
+            // dataGridViewCheckBoxColumn1
+            // 
+            this.dataGridViewCheckBoxColumn1.DataPropertyName = "State";
+            this.dataGridViewCheckBoxColumn1.HeaderText = "State";
+            this.dataGridViewCheckBoxColumn1.MinimumWidth = 8;
+            this.dataGridViewCheckBoxColumn1.Name = "dataGridViewCheckBoxColumn1";
+            this.dataGridViewCheckBoxColumn1.ReadOnly = true;
+            this.dataGridViewCheckBoxColumn1.Width = 54;
+            // 
+            // PenaltyFee
+            // 
+            this.PenaltyFee.DataPropertyName = "PenaltyFee";
+            this.PenaltyFee.HeaderText = "PenaltyFee";
+            this.PenaltyFee.MinimumWidth = 8;
+            this.PenaltyFee.Name = "PenaltyFee";
+            this.PenaltyFee.ReadOnly = true;
+            this.PenaltyFee.Width = 125;
+            // 
+            // lendsBindingSource
+            // 
+            this.lendsBindingSource.DataMember = "Lends";
+            this.lendsBindingSource.DataSource = this.lMSDBDataSet;
+            // 
+            // lMSDBDataSet
+            // 
+            this.lMSDBDataSet.DataSetName = "LMSDBDataSet";
+            this.lMSDBDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // label1
             // 
@@ -153,16 +228,6 @@ namespace BIM313_Group5_FinalProject.ChildComponents
             this.refreshbtn.UseVisualStyleBackColor = false;
             this.refreshbtn.Click += new System.EventHandler(this.refreshbtn_Click);
             // 
-            // lendsBindingSource
-            // 
-            this.lendsBindingSource.DataMember = "Lends";
-            this.lendsBindingSource.DataSource = this.lMSDBDataSet;
-            // 
-            // lMSDBDataSet
-            // 
-            this.lMSDBDataSet.DataSetName = "LMSDBDataSet";
-            this.lMSDBDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
             // lendsTableAdapter
             // 
             this.lendsTableAdapter.ClearBeforeFill = true;
@@ -178,68 +243,15 @@ namespace BIM313_Group5_FinalProject.ChildComponents
             this.tableAdapterManager.UpdateOrder = BIM313_Group5_FinalProject.LMSDBDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             this.tableAdapterManager.VisitorsTableAdapter = null;
             // 
-            // dataGridViewTextBoxColumn1
+            // timer
             // 
-            this.dataGridViewTextBoxColumn1.DataPropertyName = "ID";
-            this.dataGridViewTextBoxColumn1.HeaderText = "ID";
-            this.dataGridViewTextBoxColumn1.MinimumWidth = 8;
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
-            this.dataGridViewTextBoxColumn1.Width = 62;
+            this.timer.Enabled = true;
+            this.timer.Interval = 86400000;
+            this.timer.Tick += new System.EventHandler(this.timer_Tick);
             // 
-            // Book
+            // stocksTableAdapter
             // 
-            this.Book.DataPropertyName = "Book";
-            this.Book.HeaderText = "Book";
-            this.Book.MinimumWidth = 8;
-            this.Book.Name = "Book";
-            this.Book.ReadOnly = true;
-            this.Book.Width = 82;
-            // 
-            // Visitor
-            // 
-            this.Visitor.DataPropertyName = "Visitor";
-            this.Visitor.HeaderText = "Visitor";
-            this.Visitor.MinimumWidth = 8;
-            this.Visitor.Name = "Visitor";
-            this.Visitor.ReadOnly = true;
-            this.Visitor.Width = 89;
-            // 
-            // dataGridViewTextBoxColumn4
-            // 
-            this.dataGridViewTextBoxColumn4.DataPropertyName = "LendDate";
-            this.dataGridViewTextBoxColumn4.HeaderText = "LendDate";
-            this.dataGridViewTextBoxColumn4.MinimumWidth = 8;
-            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            this.dataGridViewTextBoxColumn4.ReadOnly = true;
-            this.dataGridViewTextBoxColumn4.Width = 116;
-            // 
-            // dataGridViewTextBoxColumn5
-            // 
-            this.dataGridViewTextBoxColumn5.DataPropertyName = "Tenancy";
-            this.dataGridViewTextBoxColumn5.HeaderText = "Tenancy";
-            this.dataGridViewTextBoxColumn5.MinimumWidth = 8;
-            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
-            this.dataGridViewTextBoxColumn5.ReadOnly = true;
-            this.dataGridViewTextBoxColumn5.Width = 105;
-            // 
-            // dataGridViewCheckBoxColumn1
-            // 
-            this.dataGridViewCheckBoxColumn1.DataPropertyName = "State";
-            this.dataGridViewCheckBoxColumn1.HeaderText = "State";
-            this.dataGridViewCheckBoxColumn1.MinimumWidth = 8;
-            this.dataGridViewCheckBoxColumn1.Name = "dataGridViewCheckBoxColumn1";
-            this.dataGridViewCheckBoxColumn1.ReadOnly = true;
-            this.dataGridViewCheckBoxColumn1.Width = 54;
-            // 
-            // PenaltyFee
-            // 
-            this.PenaltyFee.DataPropertyName = "PenaltyFee";
-            this.PenaltyFee.HeaderText = "PenaltyFee";
-            this.PenaltyFee.MinimumWidth = 8;
-            this.PenaltyFee.Name = "PenaltyFee";
-            this.PenaltyFee.ReadOnly = true;
-            this.PenaltyFee.Width = 125;
+            this.stocksTableAdapter.ClearBeforeFill = true;
             // 
             // Lends
             // 
@@ -286,5 +298,7 @@ namespace BIM313_Group5_FinalProject.ChildComponents
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
         private System.Windows.Forms.DataGridViewCheckBoxColumn dataGridViewCheckBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn PenaltyFee;
+        private System.Windows.Forms.Timer timer;
+        private LMSDBDataSetTableAdapters.StocksTableAdapter stocksTableAdapter;
     }
 }

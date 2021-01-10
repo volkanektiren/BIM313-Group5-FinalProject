@@ -481,7 +481,17 @@ WHERE ID=?</CommandText>
               <Mapping SourceColumn="PenaltyFee" DataSetColumn="PenaltyFee" />
             </Mappings>
             <Sources>
-              <DbSource ConnectionRef="LMSDBConnectionString (Settings)" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="CountNotReturnedLendsByVisitorID" Modifier="Public" Name="CountNotReturnedLendsByVisitorID" QueryType="Scalar" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="CountNotReturnedLendsByVisitorID">
+              <DbSource ConnectionRef="LMSDBConnectionString (Settings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="AddPenaltyFee" Modifier="Public" Name="AddPenaltyFee" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="AddPenaltyFee">
+                <UpdateCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>UPDATE Lends 
+SET       PenaltyFee = PenaltyFee + 3.5 
+WHERE Tenancy = 0 AND state = false</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </UpdateCommand>
+              </DbSource>
+              <DbSource ConnectionRef="LMSDBConnectionString (Settings)" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="CountNotReturnedLendsByVisitorID" Modifier="Public" Name="CountNotReturnedLendsByVisitorID" QueryType="Scalar" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy1" UserSourceName="CountNotReturnedLendsByVisitorID">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT COUNT(*) AS Expr1
@@ -493,7 +503,7 @@ WHERE (VisitorID = ?) AND (State = false)</CommandText>
                   </DbCommand>
                 </SelectCommand>
               </DbSource>
-              <DbSource ConnectionRef="LMSDBConnectionString (Settings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="Create" Modifier="Public" Name="Create" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy1" UserSourceName="Create">
+              <DbSource ConnectionRef="LMSDBConnectionString (Settings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="Create" Modifier="Public" Name="Create" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy2" UserSourceName="Create">
                 <InsertCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>INSERT INTO `Lends` (`BookID`, `VisitorID`, `LendDate`, `Tenancy`, `State`, `PenaltyFee`) VALUES (?, ?, ?, ?, ?, ?)</CommandText>
@@ -507,6 +517,39 @@ WHERE (VisitorID = ?) AND (State = false)</CommandText>
                     </Parameters>
                   </DbCommand>
                 </InsertCommand>
+              </DbSource>
+              <DbSource ConnectionRef="LMSDBConnectionString (Settings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="DecreaseTenancyBy1" Modifier="Public" Name="DecreaseTenancyBy1" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy3" UserSourceName="DecreaseTenancyBy1">
+                <UpdateCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>UPDATE Lends 
+SET       Tenancy = Tenancy - 1 
+WHERE (Tenancy &gt; 0)</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </UpdateCommand>
+              </DbSource>
+              <DbSource ConnectionRef="LMSDBConnectionString (Settings)" DbObjectName="Lends" DbObjectType="Table" GenerateShortCommands="true" GeneratorSourceName="FiilBookIDByLendID" Modifier="Public" Name="FiilBookIDByLendID" QueryType="Scalar" ScalarCallRetval="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy8" UserSourceName="FiilBookIDByLendID">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT BookID FROM Lends WHERE ID = ?</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="Param1" ColumnName="ID" DataSourceName="Lends" DataTypeServer="DbType.Int32" DbType="Int32" Direction="Input" ParameterName="ID" Precision="0" ProviderType="Integer" Scale="0" Size="0" SourceColumn="ID" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+              <DbSource ConnectionRef="LMSDBConnectionString (Settings)" DbObjectName="Books" DbObjectType="Table" GenerateShortCommands="true" GeneratorSourceName="FillBookTitleByLendID" Modifier="Public" Name="FillBookTitleByLendID" QueryType="Scalar" ScalarCallRetval="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy4" UserSourceName="FillBookTitleByLendID">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT Books.Title
+FROM   (Lends INNER JOIN
+             Books ON Lends.BookID = Books.ID)
+WHERE (Lends.ID = ?)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="Param1" ColumnName="ID" DataSourceName="Lends" DataTypeServer="DbType.Int32" DbType="Int32" Direction="Input" ParameterName="ID" Precision="0" ProviderType="Integer" Scale="0" Size="0" SourceColumn="ID" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </SelectCommand>
               </DbSource>
               <DbSource ConnectionRef="LMSDBConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="FillByBookTitle" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetDataByBookTitle" GeneratorSourceName="FillByBookTitle" GetMethodModifier="Public" GetMethodName="GetDataByBookTitle" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataByBookTitle" UserSourceName="FillByBookTitle">
                 <SelectCommand>
@@ -547,7 +590,32 @@ FROM   ((Lends INNER JOIN
                   </DbCommand>
                 </SelectCommand>
               </DbSource>
-              <DbSource ConnectionRef="LMSDBConnectionString (Settings)" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="IsExist" Modifier="Public" Name="IsExist" QueryType="Scalar" ScalarCallRetval="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy2" UserSourceName="IsExist">
+              <DbSource ConnectionRef="LMSDBConnectionString (Settings)" DbObjectName="Visitors" DbObjectType="Table" GenerateShortCommands="true" GeneratorSourceName="FillVisitorEmailByLendID" Modifier="Public" Name="FillVisitorEmailByLendID" QueryType="Scalar" ScalarCallRetval="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy5" UserSourceName="FillVisitorEmailByLendID">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT Visitors.Email
+FROM   (Lends INNER JOIN
+             Visitors ON Lends.VisitorID = Visitors.ID)
+WHERE (Lends.ID = ?)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="Param1" ColumnName="ID" DataSourceName="Lends" DataTypeServer="DbType.Int32" DbType="Int32" Direction="Input" ParameterName="ID" Precision="0" ProviderType="Integer" Scale="0" Size="0" SourceColumn="ID" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+              <DbSource ConnectionRef="LMSDBConnectionString (Settings)" DbObjectName="Lends" DbObjectType="Table" GenerateMethods="Get" GenerateShortCommands="true" GeneratorGetMethodName="GetLendIDsByTenancy" GetMethodModifier="Public" GetMethodName="GetLendIDsByTenancy" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetLendIDsByTenancy" UserSourceName="GetLendIDsByTenancy">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT ID
+FROM   Lends
+WHERE (Tenancy = ?)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="true" AutogeneratedName="Param1" ColumnName="Tenancy" DataSourceName="Lends" DataTypeServer="DbType.Int16" DbType="Int16" Direction="Input" ParameterName="Tenancy" Precision="0" ProviderType="SmallInt" Scale="0" Size="0" SourceColumn="Tenancy" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+              <DbSource ConnectionRef="LMSDBConnectionString (Settings)" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="IsExist" Modifier="Public" Name="IsExist" QueryType="Scalar" ScalarCallRetval="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy6" UserSourceName="IsExist">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT COUNT(*) AS Expr1
@@ -560,11 +628,11 @@ WHERE (BookID = ?) AND (VisitorID = ?) AND (State = false)</CommandText>
                   </DbCommand>
                 </SelectCommand>
               </DbSource>
-              <DbSource ConnectionRef="LMSDBConnectionString (Settings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="ReturnBook" Modifier="Public" Name="ReturnBook" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy3" UserSourceName="ReturnBook">
+              <DbSource ConnectionRef="LMSDBConnectionString (Settings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="ReturnBook" Modifier="Public" Name="ReturnBook" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy7" UserSourceName="ReturnBook">
                 <UpdateCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>UPDATE Lends
-SET State=true
+SET State=true, PenaltyFee = 0, Tenancy = 0
 WHERE ID=?</CommandText>
                     <Parameters>
                       <Parameter AllowDbNull="false" AutogeneratedName="Param1" ColumnName="ID" DataSourceName="Lends" DataTypeServer="DbType.Int32" DbType="Int32" Direction="Input" ParameterName="Original_ID" Precision="0" ProviderType="Integer" Scale="0" Size="0" SourceColumn="ID" SourceColumnNullMapping="false" SourceVersion="Original" />
@@ -736,7 +804,17 @@ WHERE ID=?</CommandText>
                   </DbCommand>
                 </InsertCommand>
               </DbSource>
-              <DbSource ConnectionRef="LMSDBConnectionString (Settings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="DeleteStock" Modifier="Public" Name="DeleteStock" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy1" UserSourceName="DeleteStock">
+              <DbSource ConnectionRef="LMSDBConnectionString (Settings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="DecreaseNumber" Modifier="Public" Name="DecreaseNumber" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy1" UserSourceName="DecreaseNumber">
+                <UpdateCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>UPDATE Stocks SET `Number` = Number - 1 WHERE BookID = ?</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="Param1" ColumnName="BookID" DataSourceName="Stocks" DataTypeServer="DbType.Int32" DbType="Int32" Direction="Input" ParameterName="Original_BookID" Precision="0" ProviderType="Integer" Scale="0" Size="0" SourceColumn="BookID" SourceColumnNullMapping="false" SourceVersion="Original" />
+                    </Parameters>
+                  </DbCommand>
+                </UpdateCommand>
+              </DbSource>
+              <DbSource ConnectionRef="LMSDBConnectionString (Settings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="DeleteStock" Modifier="Public" Name="DeleteStock" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy2" UserSourceName="DeleteStock">
                 <DeleteCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>DELETE FROM Stocks
@@ -758,7 +836,29 @@ FROM  Stocks WHERE BookID=?</CommandText>
                   </DbCommand>
                 </SelectCommand>
               </DbSource>
-              <DbSource ConnectionRef="LMSDBConnectionString (Settings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="UpdateStock" Modifier="Public" Name="UpdateStock" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy2" UserSourceName="UpdateStock">
+              <DbSource ConnectionRef="LMSDBConnectionString (Settings)" DbObjectName="Stocks" DbObjectType="Table" GenerateShortCommands="true" GeneratorSourceName="GetStockByBookID" Modifier="Public" Name="GetStockByBookID" QueryType="Scalar" ScalarCallRetval="System.Int16, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy3" UserSourceName="GetStockByBookID">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT [Number]
+FROM   Stocks
+WHERE (BookID = ?)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="Param1" ColumnName="BookID" DataSourceName="Stocks" DataTypeServer="DbType.Int32" DbType="Int32" Direction="Input" ParameterName="BookID" Precision="0" ProviderType="Integer" Scale="0" Size="0" SourceColumn="BookID" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+              <DbSource ConnectionRef="LMSDBConnectionString (Settings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="IncreaseNumber" Modifier="Public" Name="IncreaseNumber" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy4" UserSourceName="IncreaseNumber">
+                <UpdateCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>UPDATE Stocks SET `Number` = Number + 1 WHERE BookID = ?</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="Param1" ColumnName="BookID" DataSourceName="Stocks" DataTypeServer="DbType.Int32" DbType="Int32" Direction="Input" ParameterName="Original_BookID" Precision="0" ProviderType="Integer" Scale="0" Size="0" SourceColumn="BookID" SourceColumnNullMapping="false" SourceVersion="Original" />
+                    </Parameters>
+                  </DbCommand>
+                </UpdateCommand>
+              </DbSource>
+              <DbSource ConnectionRef="LMSDBConnectionString (Settings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="UpdateStock" Modifier="Public" Name="UpdateStock" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy5" UserSourceName="UpdateStock">
                 <UpdateCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>UPDATE Stocks
@@ -941,7 +1041,7 @@ WHERE ID=?</CommandText>
   <xs:element name="LMSDBDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="LMSDBDataSet" msprop:Generator_UserDSName="LMSDBDataSet">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="Authors" msprop:Generator_TableClassName="AuthorsDataTable" msprop:Generator_TableVarName="tableAuthors" msprop:Generator_RowChangedName="AuthorsRowChanged" msprop:Generator_TablePropName="Authors" msprop:Generator_RowDeletingName="AuthorsRowDeleting" msprop:Generator_RowChangingName="AuthorsRowChanging" msprop:Generator_RowEvHandlerName="AuthorsRowChangeEventHandler" msprop:Generator_RowDeletedName="AuthorsRowDeleted" msprop:Generator_RowClassName="AuthorsRow" msprop:Generator_UserTableName="Authors" msprop:Generator_RowEvArgName="AuthorsRowChangeEvent">
+        <xs:element name="Authors" msprop:Generator_TableClassName="AuthorsDataTable" msprop:Generator_TableVarName="tableAuthors" msprop:Generator_TablePropName="Authors" msprop:Generator_RowDeletingName="AuthorsRowDeleting" msprop:Generator_RowChangingName="AuthorsRowChanging" msprop:Generator_RowEvHandlerName="AuthorsRowChangeEventHandler" msprop:Generator_RowDeletedName="AuthorsRowDeleted" msprop:Generator_UserTableName="Authors" msprop:Generator_RowChangedName="AuthorsRowChanged" msprop:Generator_RowEvArgName="AuthorsRowChangeEvent" msprop:Generator_RowClassName="AuthorsRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="ID" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:int" />
@@ -969,7 +1069,7 @@ WHERE ID=?</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="Books" msprop:Generator_TableClassName="BooksDataTable" msprop:Generator_TableVarName="tableBooks" msprop:Generator_RowChangedName="BooksRowChanged" msprop:Generator_TablePropName="Books" msprop:Generator_RowDeletingName="BooksRowDeleting" msprop:Generator_RowChangingName="BooksRowChanging" msprop:Generator_RowEvHandlerName="BooksRowChangeEventHandler" msprop:Generator_RowDeletedName="BooksRowDeleted" msprop:Generator_RowClassName="BooksRow" msprop:Generator_UserTableName="Books" msprop:Generator_RowEvArgName="BooksRowChangeEvent">
+        <xs:element name="Books" msprop:Generator_TableClassName="BooksDataTable" msprop:Generator_TableVarName="tableBooks" msprop:Generator_TablePropName="Books" msprop:Generator_RowDeletingName="BooksRowDeleting" msprop:Generator_RowChangingName="BooksRowChanging" msprop:Generator_RowEvHandlerName="BooksRowChangeEventHandler" msprop:Generator_RowDeletedName="BooksRowDeleted" msprop:Generator_UserTableName="Books" msprop:Generator_RowChangedName="BooksRowChanged" msprop:Generator_RowEvArgName="BooksRowChangeEvent" msprop:Generator_RowClassName="BooksRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="ID" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:int" />
@@ -988,7 +1088,7 @@ WHERE ID=?</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="Genres" msprop:Generator_TableClassName="GenresDataTable" msprop:Generator_TableVarName="tableGenres" msprop:Generator_RowChangedName="GenresRowChanged" msprop:Generator_TablePropName="Genres" msprop:Generator_RowDeletingName="GenresRowDeleting" msprop:Generator_RowChangingName="GenresRowChanging" msprop:Generator_RowEvHandlerName="GenresRowChangeEventHandler" msprop:Generator_RowDeletedName="GenresRowDeleted" msprop:Generator_RowClassName="GenresRow" msprop:Generator_UserTableName="Genres" msprop:Generator_RowEvArgName="GenresRowChangeEvent">
+        <xs:element name="Genres" msprop:Generator_TableClassName="GenresDataTable" msprop:Generator_TableVarName="tableGenres" msprop:Generator_TablePropName="Genres" msprop:Generator_RowDeletingName="GenresRowDeleting" msprop:Generator_RowChangingName="GenresRowChanging" msprop:Generator_RowEvHandlerName="GenresRowChangeEventHandler" msprop:Generator_RowDeletedName="GenresRowDeleted" msprop:Generator_UserTableName="Genres" msprop:Generator_RowChangedName="GenresRowChanged" msprop:Generator_RowEvArgName="GenresRowChangeEvent" msprop:Generator_RowClassName="GenresRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="ID" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:int" />
@@ -1002,7 +1102,7 @@ WHERE ID=?</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="Lends" msprop:Generator_TableClassName="LendsDataTable" msprop:Generator_TableVarName="tableLends" msprop:Generator_RowChangedName="LendsRowChanged" msprop:Generator_TablePropName="Lends" msprop:Generator_RowDeletingName="LendsRowDeleting" msprop:Generator_RowChangingName="LendsRowChanging" msprop:Generator_RowEvHandlerName="LendsRowChangeEventHandler" msprop:Generator_RowDeletedName="LendsRowDeleted" msprop:Generator_RowClassName="LendsRow" msprop:Generator_UserTableName="Lends" msprop:Generator_RowEvArgName="LendsRowChangeEvent">
+        <xs:element name="Lends" msprop:Generator_TableClassName="LendsDataTable" msprop:Generator_TableVarName="tableLends" msprop:Generator_TablePropName="Lends" msprop:Generator_RowDeletingName="LendsRowDeleting" msprop:Generator_RowChangingName="LendsRowChanging" msprop:Generator_RowEvHandlerName="LendsRowChangeEventHandler" msprop:Generator_RowDeletedName="LendsRowDeleted" msprop:Generator_UserTableName="Lends" msprop:Generator_RowChangedName="LendsRowChanged" msprop:Generator_RowEvArgName="LendsRowChangeEvent" msprop:Generator_RowClassName="LendsRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="ID" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:int" />
@@ -1015,7 +1115,7 @@ WHERE ID=?</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="Publishers" msprop:Generator_TableClassName="PublishersDataTable" msprop:Generator_TableVarName="tablePublishers" msprop:Generator_RowChangedName="PublishersRowChanged" msprop:Generator_TablePropName="Publishers" msprop:Generator_RowDeletingName="PublishersRowDeleting" msprop:Generator_RowChangingName="PublishersRowChanging" msprop:Generator_RowEvHandlerName="PublishersRowChangeEventHandler" msprop:Generator_RowDeletedName="PublishersRowDeleted" msprop:Generator_RowClassName="PublishersRow" msprop:Generator_UserTableName="Publishers" msprop:Generator_RowEvArgName="PublishersRowChangeEvent">
+        <xs:element name="Publishers" msprop:Generator_TableClassName="PublishersDataTable" msprop:Generator_TableVarName="tablePublishers" msprop:Generator_TablePropName="Publishers" msprop:Generator_RowDeletingName="PublishersRowDeleting" msprop:Generator_RowChangingName="PublishersRowChanging" msprop:Generator_RowEvHandlerName="PublishersRowChangeEventHandler" msprop:Generator_RowDeletedName="PublishersRowDeleted" msprop:Generator_UserTableName="Publishers" msprop:Generator_RowChangedName="PublishersRowChanged" msprop:Generator_RowEvArgName="PublishersRowChangeEvent" msprop:Generator_RowClassName="PublishersRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="ID" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:int" />
@@ -1029,7 +1129,7 @@ WHERE ID=?</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="Stocks" msprop:Generator_TableClassName="StocksDataTable" msprop:Generator_TableVarName="tableStocks" msprop:Generator_RowChangedName="StocksRowChanged" msprop:Generator_TablePropName="Stocks" msprop:Generator_RowDeletingName="StocksRowDeleting" msprop:Generator_RowChangingName="StocksRowChanging" msprop:Generator_RowEvHandlerName="StocksRowChangeEventHandler" msprop:Generator_RowDeletedName="StocksRowDeleted" msprop:Generator_RowClassName="StocksRow" msprop:Generator_UserTableName="Stocks" msprop:Generator_RowEvArgName="StocksRowChangeEvent">
+        <xs:element name="Stocks" msprop:Generator_TableClassName="StocksDataTable" msprop:Generator_TableVarName="tableStocks" msprop:Generator_TablePropName="Stocks" msprop:Generator_RowDeletingName="StocksRowDeleting" msprop:Generator_RowChangingName="StocksRowChanging" msprop:Generator_RowEvHandlerName="StocksRowChangeEventHandler" msprop:Generator_RowDeletedName="StocksRowDeleted" msprop:Generator_UserTableName="Stocks" msprop:Generator_RowChangedName="StocksRowChanged" msprop:Generator_RowEvArgName="StocksRowChangeEvent" msprop:Generator_RowClassName="StocksRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Number" msprop:Generator_ColumnVarNameInTable="columnNumber" msprop:Generator_ColumnPropNameInRow="Number" msprop:Generator_ColumnPropNameInTable="NumberColumn" msprop:Generator_UserColumnName="Number" type="xs:short" minOccurs="0" />
@@ -1037,7 +1137,7 @@ WHERE ID=?</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="Visitors" msprop:Generator_TableClassName="VisitorsDataTable" msprop:Generator_TableVarName="tableVisitors" msprop:Generator_RowChangedName="VisitorsRowChanged" msprop:Generator_TablePropName="Visitors" msprop:Generator_RowDeletingName="VisitorsRowDeleting" msprop:Generator_RowChangingName="VisitorsRowChanging" msprop:Generator_RowEvHandlerName="VisitorsRowChangeEventHandler" msprop:Generator_RowDeletedName="VisitorsRowDeleted" msprop:Generator_RowClassName="VisitorsRow" msprop:Generator_UserTableName="Visitors" msprop:Generator_RowEvArgName="VisitorsRowChangeEvent">
+        <xs:element name="Visitors" msprop:Generator_TableClassName="VisitorsDataTable" msprop:Generator_TableVarName="tableVisitors" msprop:Generator_TablePropName="Visitors" msprop:Generator_RowDeletingName="VisitorsRowDeleting" msprop:Generator_RowChangingName="VisitorsRowChanging" msprop:Generator_RowEvHandlerName="VisitorsRowChangeEventHandler" msprop:Generator_RowDeletedName="VisitorsRowDeleted" msprop:Generator_UserTableName="Visitors" msprop:Generator_RowChangedName="VisitorsRowChanged" msprop:Generator_RowEvArgName="VisitorsRowChangeEvent" msprop:Generator_RowClassName="VisitorsRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="ID" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:int" />
@@ -1113,12 +1213,12 @@ WHERE ID=?</CommandText>
   </xs:element>
   <xs:annotation>
     <xs:appinfo>
-      <msdata:Relationship name="BooksLends" msdata:parent="Books" msdata:child="Lends" msdata:parentkey="ID" msdata:childkey="BookID" msprop:Generator_UserChildTable="Lends" msprop:Generator_ChildPropName="GetLendsRows" msprop:Generator_UserRelationName="BooksLends" msprop:Generator_RelationVarName="relationBooksLends" msprop:Generator_UserParentTable="Books" msprop:Generator_ParentPropName="BooksRow" />
-      <msdata:Relationship name="VisitorsLends" msdata:parent="Visitors" msdata:child="Lends" msdata:parentkey="ID" msdata:childkey="VisitorID" msprop:Generator_UserChildTable="Lends" msprop:Generator_ChildPropName="GetLendsRows" msprop:Generator_UserRelationName="VisitorsLends" msprop:Generator_ParentPropName="VisitorsRow" msprop:Generator_RelationVarName="relationVisitorsLends" msprop:Generator_UserParentTable="Visitors" />
-      <msdata:Relationship name="AuthorsBooks" msdata:parent="Authors" msdata:child="Books" msdata:parentkey="ID" msdata:childkey="AuthorID" msprop:Generator_UserChildTable="Books" msprop:Generator_ChildPropName="GetBooksRows" msprop:Generator_UserRelationName="AuthorsBooks" msprop:Generator_ParentPropName="AuthorsRow" msprop:Generator_RelationVarName="relationAuthorsBooks" msprop:Generator_UserParentTable="Authors" />
-      <msdata:Relationship name="GenresBooks" msdata:parent="Genres" msdata:child="Books" msdata:parentkey="ID" msdata:childkey="GenreID" msprop:Generator_UserChildTable="Books" msprop:Generator_ChildPropName="GetBooksRows" msprop:Generator_UserRelationName="GenresBooks" msprop:Generator_RelationVarName="relationGenresBooks" msprop:Generator_UserParentTable="Genres" msprop:Generator_ParentPropName="GenresRow" />
-      <msdata:Relationship name="PublishersBooks" msdata:parent="Publishers" msdata:child="Books" msdata:parentkey="ID" msdata:childkey="PublisherID" msprop:Generator_UserChildTable="Books" msprop:Generator_ChildPropName="GetBooksRows" msprop:Generator_UserRelationName="PublishersBooks" msprop:Generator_RelationVarName="relationPublishersBooks" msprop:Generator_UserParentTable="Publishers" msprop:Generator_ParentPropName="PublishersRow" />
-      <msdata:Relationship name="BooksStocks" msdata:parent="Books" msdata:child="Stocks" msdata:parentkey="ID" msdata:childkey="BookID" msprop:Generator_UserChildTable="Stocks" msprop:Generator_ChildPropName="GetStocksRows" msprop:Generator_UserRelationName="BooksStocks" msprop:Generator_RelationVarName="relationBooksStocks" msprop:Generator_UserParentTable="Books" msprop:Generator_ParentPropName="BooksRow" />
+      <msdata:Relationship name="BooksLends" msdata:parent="Books" msdata:child="Lends" msdata:parentkey="ID" msdata:childkey="BookID" msprop:Generator_UserChildTable="Lends" msprop:Generator_ChildPropName="GetLendsRows" msprop:Generator_UserRelationName="BooksLends" msprop:Generator_ParentPropName="BooksRow" msprop:Generator_RelationVarName="relationBooksLends" msprop:Generator_UserParentTable="Books" />
+      <msdata:Relationship name="VisitorsLends" msdata:parent="Visitors" msdata:child="Lends" msdata:parentkey="ID" msdata:childkey="VisitorID" msprop:Generator_UserChildTable="Lends" msprop:Generator_ChildPropName="GetLendsRows" msprop:Generator_UserRelationName="VisitorsLends" msprop:Generator_RelationVarName="relationVisitorsLends" msprop:Generator_UserParentTable="Visitors" msprop:Generator_ParentPropName="VisitorsRow" />
+      <msdata:Relationship name="AuthorsBooks" msdata:parent="Authors" msdata:child="Books" msdata:parentkey="ID" msdata:childkey="AuthorID" msprop:Generator_UserChildTable="Books" msprop:Generator_ChildPropName="GetBooksRows" msprop:Generator_UserRelationName="AuthorsBooks" msprop:Generator_RelationVarName="relationAuthorsBooks" msprop:Generator_UserParentTable="Authors" msprop:Generator_ParentPropName="AuthorsRow" />
+      <msdata:Relationship name="GenresBooks" msdata:parent="Genres" msdata:child="Books" msdata:parentkey="ID" msdata:childkey="GenreID" msprop:Generator_UserChildTable="Books" msprop:Generator_ChildPropName="GetBooksRows" msprop:Generator_UserRelationName="GenresBooks" msprop:Generator_ParentPropName="GenresRow" msprop:Generator_RelationVarName="relationGenresBooks" msprop:Generator_UserParentTable="Genres" />
+      <msdata:Relationship name="PublishersBooks" msdata:parent="Publishers" msdata:child="Books" msdata:parentkey="ID" msdata:childkey="PublisherID" msprop:Generator_UserChildTable="Books" msprop:Generator_ChildPropName="GetBooksRows" msprop:Generator_UserRelationName="PublishersBooks" msprop:Generator_ParentPropName="PublishersRow" msprop:Generator_RelationVarName="relationPublishersBooks" msprop:Generator_UserParentTable="Publishers" />
+      <msdata:Relationship name="BooksStocks" msdata:parent="Books" msdata:child="Stocks" msdata:parentkey="ID" msdata:childkey="BookID" msprop:Generator_UserChildTable="Stocks" msprop:Generator_ChildPropName="GetStocksRows" msprop:Generator_UserRelationName="BooksStocks" msprop:Generator_ParentPropName="BooksRow" msprop:Generator_RelationVarName="relationBooksStocks" msprop:Generator_UserParentTable="Books" />
     </xs:appinfo>
   </xs:annotation>
 </xs:schema>

@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using BIM313_Group5_FinalProject.Util;
 
 namespace BIM313_Group5_FinalProject.ChildComponents
 {
@@ -58,11 +59,18 @@ namespace BIM313_Group5_FinalProject.ChildComponents
         {
             try
             {
-                this.lendsTableAdapter.ReturnBook(Int32.Parse(lendsDataGridView.Rows[lendsDataGridView.SelectedRows[0].Index].Cells[0].Value.ToString()));
+                int lendID = Int32.Parse(lendsDataGridView.Rows[lendsDataGridView.SelectedRows[0].Index].Cells[0].Value.ToString());
+                int bookID = (int)lendsTableAdapter.FiilBookIDByLendID(lendID);
+                this.lendsTableAdapter.ReturnBook(lendID);
+                this.stocksTableAdapter.IncreaseNumber(bookID);
             }
             catch (DBConcurrencyException)
             {
                 MessageBox.Show("An errer occured while crud operation on database!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (ArgumentOutOfRangeException)
+            {
+                MessageBox.Show("Please select a row first!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
@@ -72,6 +80,25 @@ namespace BIM313_Group5_FinalProject.ChildComponents
 
         private void refreshbtn_Click(object sender, EventArgs e)
         {
+            this.Lends_Load(sender, e);
+        }
+
+        private void timer_Tick(object sender, EventArgs e)
+        {
+            lendsTableAdapter.DecreaseTenancyBy1();
+            lendsTableAdapter.AddPenaltyFee();
+
+            DataTable lendIDs = lendsTableAdapter.GetLendIDsByTenancy(3);
+
+            for(int i = 0; i<lendIDs.Rows.Count; i++)
+            {
+                int lendID = lendIDs.Rows[i].Field<int>("ID");
+                string bookTitle = lendsTableAdapter.FillBookTitleByLendID(lendID);
+                string visitorEmail = lendsTableAdapter.FillVisitorEmailByLendID(lendID);
+
+                MailSender mailSender = new MailSender(bookTitle, visitorEmail);
+            }
+            
             this.Lends_Load(sender, e);
         }
     }
