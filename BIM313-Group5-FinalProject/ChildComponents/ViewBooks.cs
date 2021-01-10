@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using BIM313_Group5_FinalProject.Models;
+using BIM313_Group5_FinalProject.Util;
 
 namespace BIM313_Group5_FinalProject.ChildComponents
 {
@@ -51,6 +52,9 @@ namespace BIM313_Group5_FinalProject.ChildComponents
             {
                 AddBook addBook = new AddBook();
                 addBook.ShowDialog();
+
+                InformationForm information = new InformationForm("New book is added.", "Info");
+                information.Show();
             }
             catch(Exception)
             {
@@ -70,6 +74,9 @@ namespace BIM313_Group5_FinalProject.ChildComponents
                 EditBook editBook = new EditBook();
                 editBook.bookID = Int32.Parse(booksDataGridView.Rows[booksDataGridView.SelectedRows[0].Index].Cells[0].Value.ToString());
                 editBook.ShowDialog();
+
+                InformationForm information = new InformationForm("Selected book is edited.", "Info");
+                information.Show();
             }
             catch (ArgumentOutOfRangeException)
             {
@@ -87,6 +94,9 @@ namespace BIM313_Group5_FinalProject.ChildComponents
             try
             {
                 this.booksTableAdapter.DeleteBook(Int32.Parse(booksDataGridView.Rows[booksDataGridView.SelectedRows[0].Index].Cells[0].Value.ToString()));
+
+                InformationForm information = new InformationForm("Selected book is deleted.", "Info");
+                information.Show();
             }
             catch (ArgumentOutOfRangeException)
             {

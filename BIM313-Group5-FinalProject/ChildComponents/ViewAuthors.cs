@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using BIM313_Group5_FinalProject.Util;
 
 namespace BIM313_Group5_FinalProject.ChildComponents
 {
@@ -40,6 +41,9 @@ namespace BIM313_Group5_FinalProject.ChildComponents
             {
                 AddAuthor addAuthor = new AddAuthor();
                 addAuthor.ShowDialog();
+
+                InformationForm information = new InformationForm("An author is added.", "Info");
+                information.Show();
             }
             catch(Exception)
             {
@@ -58,6 +62,9 @@ namespace BIM313_Group5_FinalProject.ChildComponents
                 EditAuthor editAuthor = new EditAuthor();
                 editAuthor.authorID = Int32.Parse(authorsDataGridView.Rows[authorsDataGridView.SelectedRows[0].Index].Cells[0].Value.ToString());
                 editAuthor.ShowDialog();
+
+                InformationForm information = new InformationForm("Selected author is edited.", "Info");
+                information.Show();
             }
             catch (ArgumentOutOfRangeException)
             {
@@ -74,6 +81,9 @@ namespace BIM313_Group5_FinalProject.ChildComponents
             try
             {
                 this.authorsTableAdapter.DeleteAuthor(Int32.Parse(authorsDataGridView.Rows[authorsDataGridView.SelectedRows[0].Index].Cells[0].Value.ToString()));
+
+                InformationForm information = new InformationForm("Selected author is deleted.", "Info");
+                information.Show();
             }
             catch (ArgumentOutOfRangeException)
             {

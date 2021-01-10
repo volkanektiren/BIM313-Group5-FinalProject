@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using BIM313_Group5_FinalProject.Models;
+using BIM313_Group5_FinalProject.Util;
 
 namespace BIM313_Group5_FinalProject.ChildComponents
 {
@@ -36,6 +37,9 @@ namespace BIM313_Group5_FinalProject.ChildComponents
                         publisher.name = tbParameter.Text;
 
                         publishersTableAdapter.Create(publisher.name);
+
+                        InformationForm information = new InformationForm("A publisher is added.", "Info");
+                        information.Show();
                     }
                     catch (DBConcurrencyException)
                     {
@@ -53,6 +57,9 @@ namespace BIM313_Group5_FinalProject.ChildComponents
                         publisher.name = tbParameter.Text;
 
                         publishersTableAdapter.UpdatePublisher(publisher.name, Int32.Parse(publishersDataGridView.Rows[publishersDataGridView.SelectedRows[0].Index].Cells[0].Value.ToString()));
+
+                        InformationForm information = new InformationForm("Selected publisher is edited.", "Info");
+                        information.Show();
                     }
                     catch (ArgumentOutOfRangeException)
                     {
@@ -71,6 +78,9 @@ namespace BIM313_Group5_FinalProject.ChildComponents
                     try
                     {
                         this.publishersTableAdapter.DeletePublisher(Int32.Parse(publishersDataGridView.Rows[publishersDataGridView.SelectedRows[0].Index].Cells[0].Value.ToString()));
+
+                        InformationForm information = new InformationForm("Selected publisher is deleted.", "Info");
+                        information.Show();
                     }
                     catch (ArgumentOutOfRangeException)
                     {

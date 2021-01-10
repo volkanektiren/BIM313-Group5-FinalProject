@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using BIM313_Group5_FinalProject.Util;
 
 namespace BIM313_Group5_FinalProject.ChildComponents
 {
@@ -30,6 +31,9 @@ namespace BIM313_Group5_FinalProject.ChildComponents
             {
                 NewRecord newRecord = new NewRecord();
                 newRecord.ShowDialog();
+
+                InformationForm information = new InformationForm("New stock record is added.", "Info");
+                information.Show();
             }
             catch(Exception)
             {
@@ -48,6 +52,9 @@ namespace BIM313_Group5_FinalProject.ChildComponents
                 EditStock editStock = new EditStock();
                 editStock.bookID = Int32.Parse(stocksDataGridView.Rows[stocksDataGridView.SelectedRows[0].Index].Cells[0].Value.ToString());
                 editStock.ShowDialog();
+
+                InformationForm information = new InformationForm("Selected stock record is edited.", "Info");
+                information.Show();
             }
             catch (ArgumentOutOfRangeException)
             {
@@ -64,6 +71,9 @@ namespace BIM313_Group5_FinalProject.ChildComponents
             try
             {
                 this.stocksTableAdapter.DeleteStock(Int32.Parse(stocksDataGridView.Rows[stocksDataGridView.SelectedRows[0].Index].Cells[0].Value.ToString()));
+
+                InformationForm information = new InformationForm("Selected stock record is deleted.", "Info");
+                information.Show();
             }
             catch (ArgumentOutOfRangeException)
             {

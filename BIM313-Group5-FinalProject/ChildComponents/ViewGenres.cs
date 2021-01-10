@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using BIM313_Group5_FinalProject.Models;
+using BIM313_Group5_FinalProject.Util;
 
 namespace BIM313_Group5_FinalProject.ChildComponents
 {
@@ -35,6 +36,9 @@ namespace BIM313_Group5_FinalProject.ChildComponents
                         genre.name= tbParameter.Text;
 
                         genresTableAdapter.Create(genre.name);
+
+                        InformationForm information = new InformationForm("A genre is added.", "Info");
+                        information.Show();
                     }
                     catch (DBConcurrencyException)
                     {
@@ -52,6 +56,9 @@ namespace BIM313_Group5_FinalProject.ChildComponents
                         genre.name = tbParameter.Text;
 
                         genresTableAdapter.UpdateGenre(genre.name, Int32.Parse(genresDataGridView.Rows[genresDataGridView.SelectedRows[0].Index].Cells[0].Value.ToString()));
+
+                        InformationForm information = new InformationForm("Selected genre is edited.", "Info");
+                        information.Show();
                     }
                     catch (ArgumentOutOfRangeException)
                     {
@@ -70,6 +77,9 @@ namespace BIM313_Group5_FinalProject.ChildComponents
                     try
                     {
                         this.genresTableAdapter.DeleteGenre(Int32.Parse(genresDataGridView.Rows[genresDataGridView.SelectedRows[0].Index].Cells[0].Value.ToString()));
+
+                        InformationForm information = new InformationForm("Selected genre is deleted.", "Info");
+                        information.Show();
                     }
                     catch (ArgumentOutOfRangeException)
                     {

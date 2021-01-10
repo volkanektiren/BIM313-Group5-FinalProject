@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using BIM313_Group5_FinalProject.Util;
 
 namespace BIM313_Group5_FinalProject.ChildComponents
 {
@@ -45,6 +46,9 @@ namespace BIM313_Group5_FinalProject.ChildComponents
             {
                 AddVisitor addVisitor = new AddVisitor();
                 addVisitor.ShowDialog();
+
+                InformationForm information = new InformationForm("New visitor is added.", "Info");
+                information.Show();
             }
             catch (Exception)
             {
@@ -63,6 +67,9 @@ namespace BIM313_Group5_FinalProject.ChildComponents
                 EditVisitor editVisitor = new EditVisitor();
                 editVisitor.visitorID = Int32.Parse(visitorsDataGridView.Rows[visitorsDataGridView.SelectedRows[0].Index].Cells[0].Value.ToString());
                 editVisitor.ShowDialog();
+
+                InformationForm information = new InformationForm("Selected visitor is edited.", "Info");
+                information.Show();
             }
             catch (ArgumentOutOfRangeException)
             {
@@ -79,6 +86,9 @@ namespace BIM313_Group5_FinalProject.ChildComponents
             try
             {
                 this.visitorsTableAdapter.DeleteVisitor(Int32.Parse(visitorsDataGridView.Rows[visitorsDataGridView.SelectedRows[0].Index].Cells[0].Value.ToString()));
+
+                InformationForm information = new InformationForm("Selected visitor is deleted.", "Info");
+                information.Show();
             }
             catch (ArgumentOutOfRangeException)
             {

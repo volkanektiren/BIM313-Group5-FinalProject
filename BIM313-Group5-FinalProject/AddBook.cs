@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using BIM313_Group5_FinalProject.Models;
+using BIM313_Group5_FinalProject.Util;
 
 namespace BIM313_Group5_FinalProject
 {
@@ -53,6 +54,8 @@ namespace BIM313_Group5_FinalProject
             }
             finally
             {
+                InformationForm information = new InformationForm("New book is added.", "Info");
+                information.Show();
                 this.Dispose();
             }
             

@@ -44,6 +44,9 @@ namespace BIM313_Group5_FinalProject.ChildComponents
             {
                 LendBook lendBook = new LendBook();
                 lendBook.ShowDialog();
+
+                InformationForm information = new InformationForm("A book is lent.", "Info");
+                information.Show();
             }
             catch (Exception)
             {
@@ -63,6 +66,9 @@ namespace BIM313_Group5_FinalProject.ChildComponents
                 int bookID = (int)lendsTableAdapter.FiilBookIDByLendID(lendID);
                 this.lendsTableAdapter.ReturnBook(lendID);
                 this.stocksTableAdapter.IncreaseNumber(bookID);
+
+                InformationForm information = new InformationForm("Selected book is returned from selected visitor.", "Info");
+                information.Show();
             }
             catch (DBConcurrencyException)
             {
