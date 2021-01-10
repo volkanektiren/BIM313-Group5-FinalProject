@@ -4656,7 +4656,7 @@ namespace BIM313_Group5_FinalProject.LMSDBDataSetTableAdapters {
             this._commandCollection[2].Parameters.Add(new global::System.Data.OleDb.OleDbParameter("ID", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "ID", global::System.Data.DataRowVersion.Original, false, null));
             this._commandCollection[3] = new global::System.Data.OleDb.OleDbCommand();
             this._commandCollection[3].Connection = this.Connection;
-            this._commandCollection[3].CommandText = @"SELECT Books.ID, Books.Title, Books.PublicationYear, Books.PageNumber, Authors.FirstName & ' ' & Authors.LastName AS Author, Genres.GenreName, Publishers.PublisherName
+            this._commandCollection[3].CommandText = @"SELECT Books.ID, Books.Title, Books.PublicationYear, Books.PageNumber, Authors.FirstName & ' ' & Authors.LastName AS Author, Genres.GenreName AS Genre, Publishers.PublisherName AS Publisher
 FROM   (((Books INNER JOIN
              Publishers ON Books.PublisherID = Publishers.ID) INNER JOIN
              Authors ON Books.AuthorID = Authors.ID) INNER JOIN
@@ -4672,14 +4672,14 @@ WHERE Authors.FirstName LIKE '%' + ? + '%' OR Authors.LastName LIKE '%' + ? + '%
             this._commandCollection[4].Parameters.Add(new global::System.Data.OleDb.OleDbParameter("ID", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "ID", global::System.Data.DataRowVersion.Current, false, null));
             this._commandCollection[5] = new global::System.Data.OleDb.OleDbCommand();
             this._commandCollection[5].Connection = this.Connection;
-            this._commandCollection[5].CommandText = @"SELECT Books.ID, Books.Title, Books.PublicationYear, Books.PageNumber, Authors.FirstName & ' ' & Authors.LastName AS Author, Genres.GenreName, Publishers.PublisherName
+            this._commandCollection[5].CommandText = @"SELECT Books.ID, Books.Title, Books.PublicationYear, Books.PageNumber, Authors.FirstName & ' ' & Authors.LastName AS Author, Genres.GenreName AS Genre, Publishers.PublisherName AS Publisher
 FROM   (((Books INNER JOIN
              Publishers ON Books.PublisherID = Publishers.ID) INNER JOIN
              Authors ON Books.AuthorID = Authors.ID) INNER JOIN
              Genres ON Books.GenreID = Genres.ID)
 WHERE Genres.GenreName LIKE '%' + ? + '%'";
             this._commandCollection[5].CommandType = global::System.Data.CommandType.Text;
-            this._commandCollection[5].Parameters.Add(new global::System.Data.OleDb.OleDbParameter("GenreName", global::System.Data.OleDb.OleDbType.WChar, 100, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "GenreName", global::System.Data.DataRowVersion.Current, false, null));
+            this._commandCollection[5].Parameters.Add(new global::System.Data.OleDb.OleDbParameter("GenreName", global::System.Data.OleDb.OleDbType.WChar, 100, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Genre", global::System.Data.DataRowVersion.Current, false, null));
             this._commandCollection[6] = new global::System.Data.OleDb.OleDbCommand();
             this._commandCollection[6].Connection = this.Connection;
             this._commandCollection[6].CommandText = "SELECT AuthorID, GenreID, ID, PageNumber, PublicationYear, PublisherID, Title FRO" +
@@ -4688,17 +4688,17 @@ WHERE Genres.GenreName LIKE '%' + ? + '%'";
             this._commandCollection[6].Parameters.Add(new global::System.Data.OleDb.OleDbParameter("ID", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "ID", global::System.Data.DataRowVersion.Current, false, null));
             this._commandCollection[7] = new global::System.Data.OleDb.OleDbCommand();
             this._commandCollection[7].Connection = this.Connection;
-            this._commandCollection[7].CommandText = @"SELECT Books.ID, Books.Title, Books.PublicationYear, Books.PageNumber, Authors.FirstName & ' ' & Authors.LastName AS Author, Genres.GenreName, Publishers.PublisherName
+            this._commandCollection[7].CommandText = @"SELECT Books.ID, Books.Title, Books.PublicationYear, Books.PageNumber, Authors.FirstName & ' ' & Authors.LastName AS Author, Genres.GenreName AS Genre, Publishers.PublisherName AS Publisher
 FROM   (((Books INNER JOIN
              Publishers ON Books.PublisherID = Publishers.ID) INNER JOIN
              Authors ON Books.AuthorID = Authors.ID) INNER JOIN
              Genres ON Books.GenreID = Genres.ID)
 WHERE Publishers.PublisherName LIKE '%' + ? +  '%'";
             this._commandCollection[7].CommandType = global::System.Data.CommandType.Text;
-            this._commandCollection[7].Parameters.Add(new global::System.Data.OleDb.OleDbParameter("PublisherName", global::System.Data.OleDb.OleDbType.WChar, 100, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "PublisherName", global::System.Data.DataRowVersion.Current, false, null));
+            this._commandCollection[7].Parameters.Add(new global::System.Data.OleDb.OleDbParameter("PublisherName", global::System.Data.OleDb.OleDbType.WChar, 100, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Publisher", global::System.Data.DataRowVersion.Current, false, null));
             this._commandCollection[8] = new global::System.Data.OleDb.OleDbCommand();
             this._commandCollection[8].Connection = this.Connection;
-            this._commandCollection[8].CommandText = @"SELECT Books.ID, Books.Title, Books.PublicationYear, Books.PageNumber, Authors.FirstName & ' ' & Authors.LastName AS Author, Genres.GenreName, Publishers.PublisherName
+            this._commandCollection[8].CommandText = @"SELECT Books.ID, Books.Title, Books.PublicationYear, Books.PageNumber, Authors.FirstName & ' ' & Authors.LastName AS Author, Genres.GenreName AS Genre, Publishers.PublisherName AS Publisher
 FROM   (((Books INNER JOIN
              Publishers ON Books.PublisherID = Publishers.ID) INNER JOIN
              Authors ON Books.AuthorID = Authors.ID) INNER JOIN
@@ -5844,8 +5844,8 @@ FROM   (((Books INNER JOIN
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1] = new global::System.Data.OleDb.OleDbCommand();
             this._commandCollection[1].Connection = this.Connection;
-            this._commandCollection[1].CommandText = "UPDATE Lends \r\nSET       PenaltyFee = PenaltyFee + 3.5 \r\nWHERE Tenancy = 0 AND st" +
-                "ate = false";
+            this._commandCollection[1].CommandText = "UPDATE Lends \r\nSET       PenaltyFee = PenaltyFee + 5 \r\nWHERE Tenancy = 0 AND stat" +
+                "e = false";
             this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[2] = new global::System.Data.OleDb.OleDbCommand();
             this._commandCollection[2].Connection = this.Connection;
